@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    <h1 class="title">Поздравляем!</h1>
+    <div>Вы успешно зарегистриовались на сайте под логином: <b>{{request.user}}</b></div>
+    <div style="margin-top: 200px;"><a class="buttonSimp"  href="{% url 'blog:posts' %}">На главную</a></div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+<!--{% load static %}-->
+{% block title %}Музыка{% endblock %}
+{% block content %}
+
+    <h1 class="title">{{ title }}</h1>
+
+   <!-- ПОЛЕ ПОИСКА ПЕСНИ СТАРТ -->
+    <form method="get" class="search-form">
+        <div class="search-container">
+            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск по песне или артисту или альбому или по жанру.."
+                   class="search-input">
+            <button class="search-button" type="submit">🔍 Найти</button>
+        </div>
+    </form>
+   <!-- ПОЛЕ ПОИСКА ПЕСНИ ФИНИШ -->
+
+    <!-- ФИЛЬТР ПО ЖАНРАМ СТАРТ -->
+        <div class="qqqqq">
+            <strong>Жанры:</strong>
+            <a class="buttonSimp" href="{% url 'music:music' %}">Все</a>
+            {% if genres %}
+                {% for genre in genres %}
+                    <a class="buttonSimp" href="?genre={{ genre.id }}">
+                        {{ genre.name }}
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>Нет жанров</p>
+            {% endif %}
+        </div>
+    <!-- ФИЛЬТР ПО ЖАНРАМ ФИНИШ -->
+
+    <!-- СПИСОК ПЕСЕН СТАРТ -->
+
+    <div class="shop__cards-wrapper">
+        {% for song in songs %}
+            <div class="shop__card-wrapper" style="width: 50%;">
+                <div class="xxx">
+                    <div class="musicImgSong">
+                        {% if song.album.cover %}
+                            <img src="{{ song.album.cover.url }}" class="musicImgSong"
+                                 alt="{{ song.title}}">
+                        {% else %}
+                            <img src="{% static 'no-image.png' %}" class="xxx"
+                                 alt="Нет изображения">
+                        {% endif %}
+                    </div>
+                    <div class="xxx">
+                        <div class="xxx">
+                            <h5 class="xxx">{{ song.title }}</h5>
+                            <p class="xxx">
+                                <strong>Артист:</strong> {{ song.artist.name}} <br>
+                                <strong>Альбом:</strong> {{ song.album.title }} <br>
+                                <strong>Жанр:</strong> {{ song.genre.name }}
+                            </p>
+                            {% if song.audio_file %}
+                                <audio  controls preload="none" style="width: 100%; text-align: center;">
+                                    <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                    Ваш браузер не поддерживает аудио.
+                                </audio>
+                            {% else %}
+                                <p class="xxx">Аудиофайл отсутствует</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Нет доступных песен.</p>
+        {% endfor %}
+    </div>
+    <!-- СПИСОК ПЕСЕН ФИНИШЬ -->
+
+
+    <!-- ПАГИНАЦИЯ СТАРТ -->
+    <nav>
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
+        {% endif %}
+        {% for num_page in page_obj.paginator.page_range %}
+          {% if num_page == page_obj.number %}
+              <li class="page-item active"><a class="page-link" href="#">{{ num_page }}</a></li>
+          {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ num_page }}">{{ num_page }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- ПАГИНАЦИЯ ФИНИШ -->
+
+
+{% endblock %}
+
+
+
+

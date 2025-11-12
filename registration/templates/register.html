@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h1 class="title">Регистрация</h1>
+
+    <form method="post" action="{% url 'registration:register' %}">
+        {% csrf_token %}
+<!--        {{ form.as_p }}-->
+
+                    <div class="form-group">
+                        <label for="id_username">Имя пользователя:</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Электронная почта:</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password">Пароль:</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2">Подтвердите пароль:</label>
+                        {{ form.password2 }}
+                    </div>
+
+
+        <div style="margin-top: 200px;" class = 'pageRegisterButton'>
+            <div><button class="buttonSimpForm" type="submit">Зарегистрироваться</button></div>
+            <div>Уже есть аккаунт? <a class="buttonSimp" href="{% url 'registration:login' %}">Войти</a></div>
+        </div>
+    </form>
+
+{% endblock %}

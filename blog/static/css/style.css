@@ -1,0 +1,531 @@
+/*Zero style start*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*----------------*/
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+/*----------------*/
+/*Zero style end*/
+
+
+
+/*My Style */
+        html,
+        body {
+        height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #c4c4c4;
+            background-color: #66CC99;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+         body {
+
+            height: 100vh; /* Выставляем высоту тела документа на всю страницу */
+            background-image: url('{% static 'images/winter.jpg' %}'); /* Путь к вашему файлу текстуры */
+            background-repeat: repeat; /* Включаем бесконечное повторение */
+            background-attachment: fixed; /* Фиксируем положение фона */
+        }
+
+        /* НАСТРОЙКИ ХИДЕР СТАРТ */
+
+        header {
+
+        position: fixed;
+        top: 10px;
+        width: 800px;
+        max-width: 800px;
+        padding: 10px 0;
+        z-index: 1000;
+        }
+        main {
+        margin-top: 60px;
+        }
+
+        /* НАСТРОЙКИ ХИДЕР ФИНИШЬ */
+
+
+        .wrapper {
+        max-width: 100%;
+        background-color: white;
+        padding: 20px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0;
+        margin-bottom: 10px;
+        }
+
+        /*Стили  КАРТОЧЕК СТАРТ*/
+        .shop__cards-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        }
+        .shop__card-wrapper {
+         flex-basis: calc((100% / 4) - 10px);
+         height: 200px;
+         background-color: lightgray;
+         padding: 10px 10px 10px 10px;
+        }
+        @media (max-width: 600px) {
+          .post {
+            flex-basis: 100%;
+          }
+        }
+
+
+
+        /*Стили  КАРТОЧЕК ФИНИШ*/
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* border-bottom: 1px solid #ccc;*/
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+
+
+        a {
+          outline: none;
+          text-decoration: none;
+          width: 19.5%;
+          margin-right: 0.625%;
+          text-align: center;
+          line-height: 3;
+          color: black;
+          padding: 10px;
+        }
+        /*Стили  ЗАГОЛОВОК СТАРТ*/
+        .title{
+        text-align: center;
+        font-size: 35px;
+        font-weight: 700;
+        color: #696969;
+        margin-bottom: 35px;
+        }
+        .postTitle{
+        font-size: 26px;
+        font-weight: 700;
+        color: #696969;
+        }
+        .categoryStyle{
+        margin-bottom: 35px;
+        }
+        .paragraph{
+        margin-bottom: 35px;
+        }
+
+
+
+        /*Стили  ЗАГОЛОВОК ФИНИШ*/
+
+
+         /*Стили  ПОИСК СТАРТ*/
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        /* Контейнер для поля ввода и кнопки */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Поле ввода */
+        .search-input {
+            padding: 10px;
+            border: none;
+            outline: none;
+            width: 610px;
+            font-size: 16px;
+            color: #333;
+            background-color: transparent;
+        }
+
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #9d9d9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .search-button:hover {
+            background-color: #4682B4;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+         /*Стили  ПОИСК ФИНИШ*/
+
+
+        /*Стили  КНОПОК СТАРТ*/
+        .buttonSimp {
+          background-color: #9d9d9d;
+          border-radius: 5px;
+          color: white;
+          margin-right: 10px;
+
+        }
+
+
+
+
+        .buttonSimp:hover{
+        background-color: #9d9d9d;
+        color: yellow;
+        box-shadow: 0 0 10px 0;
+        transition: background-color 0.3s ease;
+        transform: scale(1.05);
+        }
+        .buttonSimpForm {
+         background-color: #9d9d9d;
+         border-radius: 5px;
+         color: white;
+         margin-right: 10px;
+         padding: 10px 20px;
+         font-size: 16px;
+         border: none;
+         transition: background-color 0.3s ease;
+        }
+        .buttonSimpForm:hover{
+        background-color: #9d9d9d;
+        color: yellow;
+        box-shadow: 0 0 10px 0;
+        transition: background-color 1s, border-color 1s;
+        transform: scale(1.05);
+        }
+        .buttonDel {
+         background-color: #9d9d9d;
+         border-radius: 5px;
+         color: white;
+         margin-right: 10px;
+         padding: 10px 20px;
+         font-size: 16px;
+         border: none;
+        }
+        .buttonDel:hover{
+        background-color: red;
+        color: yellow;
+        box-shadow: 0 0 10px 0;
+        transition: background-color 1s, border-color 1s;
+        transform: scale(1.05);
+        }
+
+        .baseMenu,
+        .pageAddPostButton,
+        .pageLoginButton,
+        .pageRegisterButton,
+        .pageEditPostButton{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        /*Стили  КНОПОК ФИНИШ*/
+
+
+        /*Стили главной страницы блога СТАРТ*/
+        .postTitleDiv{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #9d9d9d;
+        }
+
+
+       .postImgDiv{
+        max-width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+        .postImgDivP{
+        /*width: 900px;*/
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        }
+        .postInfoBlok{
+        margin-top: 20px;
+        }
+
+        .postInfo{
+            text-align: right;
+        }
+
+        .postInfoMenu {
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        /*Стили главной страницы блога ФИНИШ*/
+
+        /*Стили ПОДРОБНОСТИ страницы блога СТАРТ*/
+
+        .imgDet{
+        max-width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+        .imgDetP{
+        /*width: 700px;*/
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        }
+        /*Стили ПОДРОБНОСТИ страницы блога ФИНИШ*/
+
+        /*Стили ФУТЕР  СТАРТ*/
+        footer {
+        text-align: center;
+        margin-top: auto;
+        min-height: 25px;
+        padding: 20px 20px;
+        box-shadow: 0 0 5px 0;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        }
+        /*Стили ФУТЕР  ФИНИШ*/
+
+
+
+
+        /*Стили ОТПРАВКА ПИСЬМА  СТАРТ*/
+
+        label {
+            font-weight: bold;
+            color: #696969;
+        }
+        .labelToCenter{
+        text-align: center;
+        margin-bottom: 15px;
+        }
+
+        .textForm {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 95%;
+            margin-top: 15px;
+
+        }
+        .textareaForm {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 95%;
+            height: 150px;
+            margin-top: 5px;
+            resize: vertical; /* Позволяет изменять высоту текстовой области */
+        }
+        .out_forButtonUp{
+        margin-top: 25px;
+        }
+
+        .label_send_emailForm{
+        margin-bottom: 5px;
+        }
+        /*Стили ОТПРАВКА ПИСЬМА  ФИНИШ*/
+
+
+         /*Стили РЕДАКТИРОВАТЬ/ДОБАВИТЬ ПОСТ  СТАРТ*/
+        .labelEditAddPost {
+            font-weight: bold;
+            color: #696969;
+        }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 97%;
+            margin-top: 5px;
+        }
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Стили для кнопки загрузки изображения */
+        .form-control-file {
+            padding: 10px;
+
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 5px;
+            background-color: #9d9d9d;
+            color: white;
+            margin-right: 10px;
+            width: 97%;
+        }
+
+        /*Стили РЕДАКТИРОВАТЬ/ДОБАВИТЬ ПОСТ  ФИНИШ*/
+
+
+        /*Стили ПАГИТНАЦИЯ  СТАРТ*/
+        .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        }
+
+
+        .pagination li {
+        background-color: #9d9d9d;
+        border-radius: 5px;
+        padding: 1px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        user-select: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-right: 5px;
+        }
+
+        .pagination li:hover {
+        background-color: #9d9d9d;
+        color: yellow;
+        box-shadow: 0 0 10px 0;
+        transition: background-color 1s, border-color 1s;
+        }
+
+        .pagination li.active {
+        background-color: #66CC99;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .pagination li.disabled {
+        opacity: 0.5;
+        cursor: default;
+        pointer-events: none;
+        }
+
+        .pagination li:not(.disabled):hover {
+            transform: scale(1.05);
+        }
+        .pagination li:first-child {
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .pagination li:last-child {
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .pagination li {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+        /*Стили ПАГИТНАЦИЯ  ФИНИШ*/
+
+
+
+        .musicImgSong{
+        width: 150px;
+        }
+        .wrapperSong {
+        max-width: 100%;
+        background-color: white;
+        padding: 20px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0;
+        margin-bottom: 10px;
+
+        }
+
+

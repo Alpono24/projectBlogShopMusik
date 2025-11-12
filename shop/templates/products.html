@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Список товаров{% endblock %}
+
+{% block content %}
+<h1 class="title">{{ title }}</h1>
+
+
+   <!-- ПОЛЕ ПОИСКА ТОВАРА СТАРТ -->
+    <form method="get" class="search-form">
+        <div class="search-container">
+            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск названию товара..."
+                   class="search-input">
+            <button class="search-button" type="submit">🔍 Найти</button>
+        </div>
+    </form>
+   <!-- ПОЛЕ ПОИСКА ТОВАРА ФИНИШ -->
+
+<!-- Фильтр по категориям -->
+<div class="productCategory">
+    <strong>Категории:</strong>
+    <a href="{% url 'shop:products' %}" class="buttonSimp">Все</a>
+    {% for category in categories %}
+        <a href="?category={{ category.id }}" class="buttonSimp">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</div>
+
+<!-- Список товаров -->
+
+<div class="shop__cards-wrapper">
+    {% for product in page_obj %}
+        <div class="shop__card-wrapper">
+            <div class="QQQ">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" style="width: 50%;" class="QQQ" alt="{{ product.name}}">
+                {% else %}
+                    <img src="{% static 'no-image.png' %}" class="QQQ" alt="Нет фото">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="productName">{{ product.name }}</h5>
+                    <p class="productDescription">{{ product.description|truncatewords:15 }}</p>
+                    <p class="productPrice">{{ product.price }} руб.</p>
+                    {% if product.in_stock %}
+                        <span class="productInStock">В наличии</span>
+                    {% else %}
+                        <span class="productNotInStock">Нет в наличии</span>
+                    {% endif %}
+                </div>
+                <div class="productMore">
+                    <a href="{% url 'products:product_detail' product.id %}" class="buttonSimp">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>Нет доступных товаров.</p>
+    {% endfor %}
+</div>
+
+
+    <!-- ПАГИНАЦИЯ СТАРТ -->
+    <nav>
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
+        {% endif %}
+        {% for num_page in page_obj.paginator.page_range %}
+          {% if num_page == page_obj.number %}
+              <li class="page-item active"><a class="page-link" href="#">{{ num_page }}</a></li>
+          {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ num_page }}">{{ num_page }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- ПАГИНАЦИЯ ФИНИШ -->
+{% endblock %}

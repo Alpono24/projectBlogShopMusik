@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="title">Войдите в свою учётную запись или зарегистрируйтесь</h1>
+
+
+    <form method="post" action="{% url 'registration:login' %}">
+        {% csrf_token %}
+        <p class="labelToCenter">
+            <label>Имя пользователя:</label></br>
+            <input type="text" name="username">
+        </p>
+        <p class="labelToCenter">
+            <label >Пароль:</label></br>
+            <input type="password" name="password">
+        </p>
+        <div style="margin-top: 70px;" class = 'pageLoginButton'>
+            <div><button class="buttonSimpForm" type="submit">Войти</button></div>
+            <div>Нет аккаунта?  <a class="buttonSimp" href="{% url 'registration:register' %}">Зарегистрироваться</a></div>
+        </div>
+
+    </form>
+
+
+
+{% endblock %}

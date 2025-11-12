@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Отправка письма</title>
+    <h1 class="title">Отправьте нам письмо!</h1>
+    <!-- Используем метод POST -->
+
+
+    <form class="send_emailForm" method="post" action="{% url 'blog:send_email' %}">
+        {% csrf_token %}
+        <label for="subject">Тема:</label>
+        <input class="textForm" type="text" id="subject" name="subject">
+
+        <label  class="label_send_emailForm" for="message" >Сообщение:</label>
+        <textarea class="textareaForm" id="message" name="message" placeholder='Приветствую. Хотел бы ...'></textarea>
+
+        <button class="buttonSimpForm out_forButtonUp" type="submit">Отправить письмо</button>
+    </form>
+
+{% endblock %}

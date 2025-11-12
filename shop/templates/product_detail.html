@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+
+    <div class="col-md-5">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="qqq" alt="{{ product.name }}">
+        {% else %}
+            <img src="{% static 'no-image.png' %}" class="qqq" alt="Нет фото">
+        {% endif %}
+    </div>
+
+
+    <div class="qqq">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+
+
+        <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+
+
+        {% if product.in_stock %}
+            <p><span class="qqq">В наличии</span></p>
+        {% else %}
+            <p><span class="qqq">Нет в наличии</span></p>
+        {% endif %}
+
+
+
+        <form method="post" action="{% url 'shop:add_to_cart' product.id %}">
+            {% csrf_token %}
+            <button type="submit" class="buttonSimpForm">Добавить в корзину</button>
+        </form>
+
+
+        <a href="{% url 'shop:products' %}" class="buttonSimp">Назад к товарам</a>
+
+
+    </div>
+</div>
+{% endblock %}
