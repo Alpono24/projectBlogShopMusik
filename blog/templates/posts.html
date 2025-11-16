@@ -1,10 +1,8 @@
 {% extends "base.html" %}
-<!--{% load static %}-->
+{% load static %}
 {% block content %}
 <div><a class="buttonSimpForm" href="{% url 'blog:add_post' %}">Добавить статью</a></div>
-    <h1 class="title">{{ title }}</h1>
-
-
+    <h1 class="title_page">{{ title }}</h1>
 
 
        <!-- ПОЛЕ ПОИСКА СТАТЬИ СТАРТ -->
@@ -17,14 +15,12 @@
     </form>
    <!-- ПОЛЕ ПОИСКА СТАТЬИ ФИНИШ -->
 
-
-
     <!-- ФИЛЬТР ПО КАТЕГОРИЯМ СТАРТ -->
-    <div class="categoryStyle">
+    <div class="post__category_styles">
         <strong>Категории:</strong>
-        <a class="buttonSimp" href="{% url 'blog:posts' %}" class="xxx">Все</a>
+        <a class="post__category_buttons" href="{% url 'blog:posts' %}" class="xxx">Все</a>
         {% for category in categories %}
-            <a class="buttonSimp" href="?category={{ category.id }}" class="xxx">
+            <a class="post__category_buttons" href="?category={{ category.id }}" class="xxx">
                 {{ category.name }}
             </a>
         {% endfor %}
@@ -34,40 +30,34 @@
 
 
     <!-- СТАТЬИ СТАРТ -->
-    <div class="">
+    <div class="post__cards-wrapper">
         {% for post in page_obj %}
-            <div class="post">
-
-                    <div class="postTitleDiv">
+            <div class="post__card-wrapper">
+                    <div class="post__title-box">
                         {% csrf_token %}
-                        <div><h2 class="postTitle">{{post.title}}</h2></div>
-                        <div><a class="buttonSimp" href="{% url 'blog:post_detail' post.id %}">Подробнее</a></div>
+                        <div><h2 class="post__title-all">{{post.title}}</h2></div>
+                        <div><a class="post__button-more" href="{% url 'blog:post_detail' post.id %}">Подробнее</a></div>
                     </div>
 
-                    <div class="postBody">{{post.body}}<div>
+                    <div class="post__body-img-wrapper">
+                        <div class="post__body">{{post.body}}<div>
 
-                    {% if post.image %}
-                    <div class='postImgDiv'><img class='postImgDivP' src="{{ post.image.url }}" alt="{{ post.name }}"></div>
-                    {% endif %}
-
-
-                    <div class="postInfoBlok">
-                        <div class="postInfo">Автор публикации: {{post.author}}</div>
-                        <div class="postInfo">Категория: {{post.category}}</div>
-                        <div class="postInfo">Дата публикации: {{post.created_at|date:"d.m.y H:i"}}</div>
+                        {% if post.image %}
+                        <div class='post__img'><img class='post__img_img' src="{{ post.image.url }}" alt="{{ post.name }}"></div>
+                        {% endif %}
                     </div>
 
-
-                    <div class="postInfoMenu">
-                        {% csrf_token %}
-        <!--                <div><a class="buttonSimp" href="{% url 'blog:post_detail' post.id %}">Подробнее</a></div>-->
-        <!--                <div><a class="buttonSimp" href="{% url 'blog:edit_post' post.id %}">Редактировать пост</a></div>-->
-        <!--                <div><a class="buttonSimp" href="{% url 'blog:delete_post' post.id %}">Удалить пост</a></div>-->
+                    <div class="post_info-blok">
+                        <div class="post_info">Автор публикации: {{post.author}}</div>
+                        <div class="post_info">Категория: {{post.category}}</div>
+                        <div class="post_info">Дата публикации: {{post.created_at|date:"d.m.y H:i"}}</div>
                     </div>
             </div>
         {% endfor %}
     </div>
     <!-- СТАТЬИ ФИНИШ -->
+
+
 
     <!-- ПАГИНАЦИЯ СТАРТ -->
     <nav>

@@ -154,42 +154,42 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# Префикс URL для статических файлов
+# BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_URL = '/static/'
+
+# Папка, куда будут собраны статические файлы
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
+STATIC_ROOT = BASE_DIR / 'static_collected'
 
 '''1. Автоматическая регистрация статики:
    Если у вас папка static внутри каждого приложения (например, app1/static/app1, app2/static/app2 и т.д.), 
    Django автоматически соберёт статику из этих папок благодаря опции STATICFILES_FINDERS, 
    которая по умолчанию включает опцию поиска статики по каждому приложению:'''
+# Поиск статических файлов
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
 ]
-
 '''2. Дополнительные пути для статики:
    Если нужно указать конкретные пути для статики, 
    вы можете дополнить STATICFILES_DIRS в settings.py:'''
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'blog/static/',
-#     BASE_DIR / 'shop/static/',
-#     BASE_DIR / 'music/static/',
-#     BASE_DIR / 'registration/static/'
-# ]
-
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'blog/static/blog/',
+    BASE_DIR / 'shop/static/shop/',
+    BASE_DIR / 'music/static/music/',
+    BASE_DIR / 'registration/static/registration/'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-
 #Регистрация
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
-
-
 
 #Настройка зоны Минск
 TIME_ZONE  = os.environ.get('TIME_ZONE')
@@ -209,14 +209,16 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
-
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Адрес отправителя по умолчанию
 SERVER_EMAIL = EMAIL_HOST_USER        # Адрес для служебных сообщений
 
 
-
-
+#Настройка кэша
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}

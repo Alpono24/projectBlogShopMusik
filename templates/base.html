@@ -1,69 +1,76 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
     {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/zero_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/css/style_blog.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/style_shop.css' %}">
+    <link rel="stylesheet" href="{% static 'music/css/style_music.css' %}">
+    <link rel="stylesheet" href="{% static 'registration/css/style_registration.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/pagination_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons_style.css' %}">
+    
+
+
 </head>
-<body>
+<body class="body__base">
+    <header class="header">
+            <div class="menu">
+                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
+                <div><a class="button__menu button__menu-first" href="{% url 'blog:posts' %}">Блог</a></div>
+                <div><a class="button__menu" href="{% url 'shop:products' %}">Магазин</a></div>
+                <div><a class="button__menu" href="{% url 'music:music' %}">Музыка</a></div>
+                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
+            </div>
+            <div class="logo">
+                  <img class="logo_img"src="{% static 'svg/logo.svg' %}"  alt="logo">
+                 <!-- <a class="logo_img" href="{% url 'blog:posts' %}"><img class="logo_img"src="{% static 'svg/logo.svg' %}"  alt="logo"></a> -->
+            </div>
+            <div class="menu_register">
+                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
+                {% if user.is_authenticated %}
+                    <div class="menu_auth_name"><pre>Вы зарегистрированы как:
+                        <b>{{ user.username }}</b></pre>
+                    </div>
+                    <div> 
+                        <form method="post" action="{% url 'registration:logout' %}">
+                            {% csrf_token %}
+                            <button class="button__menu button__menu-last" type="submit">Выйти</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <div><a class="button__menu" href="{% url 'registration:login' %}">Войти</a></div>
+                    <div><a class="button__menu button__menu-last" href="{% url 'registration:register' %}">Регистрация</a></div>
+                {% endif %}
+                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
+            </div>
+    </header>
 
-<header>
-    <div class="baseMenu">
-        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
-        <div><a class="buttonSimp" href="{% url 'blog:posts' %}">Статьи</a></div>
-        <div><a class="buttonSimp" href="{% url 'music:music' %}">Музыка</a></div>
-        <div><a class="buttonSimp" href="{% url 'shop:products' %}">Магазин</a></div>
+    <div class="container">
+        <main>
+            <div class="wrapper">
+                {% block content %}
+                <!-- Здесь дочерние шаблоны вставят свой HTML -->
+                {% endblock %}
+            </div>
+        </main>
 
-
-
-
-
-        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
+        <footer class=footer>
+            <div class="footer__wrapper">
+                <div class="footer__left-part"><pre>2025 Учебный проект Django BlogShopMusic: 
+Alpono24</pre></div>
+                <div class="footer__right-part"><a class="buttonSimp"  href="{% url 'blog:send_email' %}">Напишите мне</a></div>
+            </div>
+        </footer>
     </div>
-
-
-    <div class="baseMenu">
-        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
-                    {% if user.is_authenticated %}
-                        <div><pre>Вы зарегистрированы как:
-              <b>{{ user.username }}  </pre></b></div>
-                                <form method="post" action="{% url 'registration:logout' %}">
-                                    {% csrf_token %}
-                                    <button class="buttonSimpForm" type="submit">Выйти</button>
-                                </form>
-                        {% else %}
-                            <div><a class="buttonSimp" href="{% url 'registration:login' %}">Войти</a></div>
-                            <div><a class="buttonSimp" href="{% url 'registration:register' %}">Регистрация</a></div>
-
-                    {% endif %}
-        <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
-    </div>
-</header>
-
-
-
-
-<main>
-
-<div class="wrapper">
-    {% block content %}
-    <!-- Здесь дочерние шаблоны вставят свой HTML -->
-    {% endblock %}
-</div>
-
-</main>
-
-
-
-<footer class=footer>
-    <div class="footerText">
-        <small>2025 Учебный проект Django Blog: Alpono24</small>
-    </div>
-</footer>
-
 </body>
 
 </html>
-
 

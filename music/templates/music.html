@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-<!--{% load static %}-->
+{% load static %}
 {% block title %}Музыка{% endblock %}
 {% block content %}
 
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title_page">{{ title }}</h1>
 
    <!-- ПОЛЕ ПОИСКА ПЕСНИ СТАРТ -->
     <form method="get" class="search-form">
@@ -16,12 +16,12 @@
    <!-- ПОЛЕ ПОИСКА ПЕСНИ ФИНИШ -->
 
     <!-- ФИЛЬТР ПО ЖАНРАМ СТАРТ -->
-        <div class="qqqqq">
+        <div class="music_category__styles">
             <strong>Жанры:</strong>
-            <a class="buttonSimp" href="{% url 'music:music' %}">Все</a>
+            <a class="music__category_buttons" href="{% url 'music:music' %}">Все</a>
             {% if genres %}
                 {% for genre in genres %}
-                    <a class="buttonSimp" href="?genre={{ genre.id }}">
+                    <a class="music__category_buttons" href="?genre={{ genre.id }}">
                         {{ genre.name }}
                     </a>
                 {% endfor %}
@@ -33,41 +33,39 @@
 
     <!-- СПИСОК ПЕСЕН СТАРТ -->
 
-    <div class="shop__cards-wrapper">
+    <div class="music__cards-wrapper">
         {% for song in songs %}
-            <div class="shop__card-wrapper" style="width: 50%;">
-                <div class="xxx">
-                    <div class="musicImgSong">
+            <div class="music__card-wrapper">
+                    <div class="music__imgs-wrapper">
                         {% if song.album.cover %}
-                            <img src="{{ song.album.cover.url }}" class="musicImgSong"
+                            <img class="music__img_song" src="{{ song.album.cover.url }}" 
                                  alt="{{ song.title}}">
                         {% else %}
-                            <img src="{% static 'no-image.png' %}" class="xxx"
-                                 alt="Нет изображения">
+                            <img class="music__img_song" src="{% static 'no-image.png' %}" alt="Нет изображения">
                         {% endif %}
                     </div>
-                    <div class="xxx">
-                        <div class="xxx">
-                            <h5 class="xxx">{{ song.title }}</h5>
-                            <p class="xxx">
-                                <strong>Артист:</strong> {{ song.artist.name}} <br>
-                                <strong>Альбом:</strong> {{ song.album.title }} <br>
-                                <strong>Жанр:</strong> {{ song.genre.name }}
+                    <div class="music__song-wrapper">
+                        <div class="music__info_song">
+                            <h5 class="music__song-title">{{ song.title }}</h5>
+                            <p class="music__song-info">
+                                <strong class="music__song-artist">Артист:</strong> {{ song.artist.name}} <br>
+                                <strong class="music__song-album">Альбом:</strong> {{ song.album.title }} <br>
+                                <strong class="music__song-genre">Жанр:</strong> {{ song.genre.name }}
                             </p>
                             {% if song.audio_file %}
-                                <audio  controls preload="none" style="width: 100%; text-align: center;">
+                                <audio  class="music__song-audio" controls preload="none">
                                     <source src="{{ song.audio_file.url }}" type="audio/mpeg">
                                     Ваш браузер не поддерживает аудио.
                                 </audio>
                             {% else %}
-                                <p class="xxx">Аудиофайл отсутствует</p>
+                                <p class="music__song-audio-absent">Аудиофайл отсутствует</p>
                             {% endif %}
                         </div>
                     </div>
-                </div>
+                
             </div>
         {% empty %}
-            <p>Нет доступных песен.</p>
+            <p class="music__no-songs-available">Нет доступных песен.</p>
         {% endfor %}
     </div>
     <!-- СПИСОК ПЕСЕН ФИНИШЬ -->

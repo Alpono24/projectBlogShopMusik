@@ -6,34 +6,26 @@
 {% block content %}
 
 
-<!--    <div class="xxx">-->
-<!--        {% if product.image %}-->
-<!--            <img src="{{ product.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ product.name }}">-->
-<!--        {% else %}-->
-<!--            <img src="{% static 'no-image.png' %}" class="img-fluid rounded shadow-sm" alt="Нет фото">-->
-<!--        {% endif %}-->
-<!--    </div>-->
-
-  <div class="post">
-        <h2 style="margin-bottom: 20px;" class="postTitle">{{post.title}}</h2>
-        <div class="postBody">{{post.body}}</div>
-
+  <div class="post__card-wrapper">
+        <h2 class="post__title-detail">{{post.title}}</h2>
+        <div class="post__body">{{post.body}}</div>
             {% if post.image %}
-            <div class="imgDet"><img class="imgDetP" src="{{ post.image.url }}" alt="{{ post.name }}"></div>
+            <div class="post_detail__img"><img class="post_detail__img_img" src="{{ post.image.url }}" alt="{{ post.name }}"></div>
             {% endif %}
 
 
-        <div style="margin-top: 150px;" class="postInfo">Автор публикации: {{post.author}}</div>
-        <div class="postInfo">Категория: {{post.category}}</div>
-        <div class="postInfo">Дата публикации: {{post.created_at|date:"d.m.y H:i"}}</div>
+        <div class="post_info-blok">
+            <div class="post_info">Автор публикации: {{post.author}}</div>
+            <div class="post_info">Категория: {{post.category}}</div>
+            <div class="post_info">Дата публикации: {{post.created_at|date:"d.m.y H:i"}}</div>
+        </div>
 
-         <div class="postInfoMenu">
+        <div class="post_choice-menu">
              {% csrf_token %}
-
             <div><a class="buttonSimp"  href="{% url 'blog:posts' %}">На главную</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:edit_post' post.id %}">Редактировать пост</a></div>
             <div><a class="buttonSimp"  href="{% url 'blog:send_email' %}">Отправить сообщение владельцу</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:delete_post' post.id %}">Удалить пост</a></div>
-         </div>
+        </div>
     </div>
 {% endblock %}

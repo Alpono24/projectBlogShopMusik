@@ -1,0 +1,16 @@
+
+
+@font-face {
+  font-family: 'Bebas';
+  src: url("../fonts/BebasNeue Bold.eot");
+  src: local("☺"), url("../fonts/BebasNeue Bold.woff") format("woff"), url("../fonts/BebasNeue Bold.ttf") format("truetype"), url("../fonts/BebasNeue Bold.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'AkzidenzGroteskPro-BoldCn';
+  src: url("../fonts/AkzidenzGroteskPro-BoldCn.eot");
+  src: local("☺"), url("../fonts/AkzidenzGroteskPro-BoldCn.woff") format("woff"), url("../fonts/AkzidenzGroteskPro-BoldCn.ttf") format("truetype"), url("../fonts/AkzidenzGroteskPro-BoldCn.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+

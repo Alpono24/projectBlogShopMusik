@@ -1,0 +1,13 @@
+/*Style cards START*/
+.shop__cards-wrapper{
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+.shop__card-wrapper {
+  flex-basis: calc((100% / 4) - 10px);
+  height: 200px;
+  background-color: lightgray;
+  padding: 10px 10px 10px 10px;
+}
+/*Style cards END*/

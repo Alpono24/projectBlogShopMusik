@@ -60,4 +60,4 @@ def cart_view(request):
     cart = request.session.get('cart', [])
     products = Product.objects.filter(id__in=cart)
     total = sum(p.price for p in products)
-    return render(request, 'cart.html', {'products': products, 'total': total})
+    return render(request, 'products_cart.html', {'products': products, 'total': total})

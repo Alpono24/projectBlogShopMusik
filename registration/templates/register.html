@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{ title }}</h1>
-<h1 class="title">Регистрация</h1>
+<h1 class="title_page">Регистрация</h1>
 
     <form method="post" action="{% url 'registration:register' %}">
         {% csrf_token %}

@@ -1,0 +1,129 @@
+/*Style SEARCH START*/
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Контейнер для поля ввода и кнопки */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Поле ввода */
+.search-input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 610px;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+}
+
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #9d9d9d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+}
+
+.search-button:hover {
+    background-color: #4682B4;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+/*Style SEARCH END*/
+
+
+
+
+/*Style SEND_MAIL START*/
+
+label {
+    font-weight: bold;
+    color: #696969;
+}
+.labelToCenter{
+text-align: center;
+margin-bottom: 15px;
+}
+
+.textForm {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 95%;
+    margin-top: 15px;
+
+}
+.textareaForm {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 95%;
+    height: 150px;
+    margin-top: 5px;
+    resize: vertical; 
+}
+.out_forButtonUp{
+margin-top: 25px;
+}
+
+.label_send_emailForm{
+margin-bottom: 5px;
+}
+/*Style SEND_MAIL END*/
+
+
+
+
+/*Style ADD/EDIT_POST START*/
+
+.labelEditAddPost {
+font-weight: bold;
+color: #696969;
+}
+.form-control {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+width: 97%;
+margin-top: 5px;
+}
+textarea.form-control {
+height: 150px;
+resize: vertical;
+}
+
+/*Style LOAD_IMAGE START*/
+.form-control-file {
+padding: 10px;
+
+border-radius: 5px;
+font-size: 16px;
+width: 100%;
+margin-top: 5px;
+background-color: #9d9d9d;
+color: white;
+margin-right: 10px;
+width: 97%;
+}
+/*Style LOAD_IMAGE END*/
+/*Style ADD/EDIT_POST END*/

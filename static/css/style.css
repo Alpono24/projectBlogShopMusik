@@ -1,0 +1,217 @@
+/* Style for base.html  */
+
+/*Style COMMON START*/
+html{
+    height: 100%; /*для фиксации Футера */
+}
+
+main{
+    flex-grow: 1; /*для фиксации Футера */
+}
+
+.body__base {
+    font-family: Arial, sans-serif;
+    background-color: #66CC99;
+    height: 100%; /*для фиксации Футера */
+}
+/*Style COMMON END*/
+    
+/*Style header START*/
+.header {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    height: 60px;
+
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;  
+}
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.menu_register{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.menu_auth_name{
+    font-weight: 100;
+    font: 12px sans-serif;
+}
+
+/*Style header END*/
+
+/*Style logo END*/
+.logo {
+    position: absolute; 
+    left: 50%;          
+    transform: translateX(-50%); 
+    /* text-align: center;*/
+    flex-grow: 1; 
+}
+
+.logo_img {
+    height: 50px; 
+    object-fit: contain;
+}
+/*Style logo END*/
+
+
+.menu_auth_name{
+    padding-right: 0.8rem;
+}
+
+/*Style wrapper START*/
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    /* background-color: red; */
+    padding: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 0;
+    margin-top: 68px;
+    margin-bottom: 10px;
+}
+/*Style wrapper END*/
+
+
+/*Style COMMON START*/
+.title_page{
+font-family: 'Roboto', sans-serif;
+text-transform: uppercase;
+letter-spacing: 5px;
+text-align: center;
+font-size: 25px;
+font-weight: 900;
+color: #696969;
+color: #619e27;
+margin-bottom: 15px;
+}
+
+
+
+/*Style COMMON END*/
+
+
+
+
+
+/*Style footer START*/
+.footer {
+    background-color: #41343493;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    padding: 20px 20px;
+    min-height: 80px;
+}
+
+.container{
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__wrapper {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__left-part,
+.footer__right-part {
+    flex-basis: 50%;
+}
+/*Style footer END*/
+
+
+/* Settings mobile */
+/* Settings mobile  HEADER START*/
+@media screen and (max-width: 850px) {
+    .wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 5px 5px;
+    border-radius: 2px; 
+    box-shadow: 0 0 8px 0; 
+    margin-top: 85px;
+    margin-bottom: 20px;
+    }
+    .header {
+        flex-direction: column; 
+        align-items: stretch;
+        height: 80px;
+      
+   
+    }
+    .menu {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; 
+        margin-top: 10px; /* отступ для адаптива*/
+    }
+    .menu_register{
+        justify-content: flex-end;
+        margin-bottom: 10px; 
+
+    }
+
+    .logo {
+        /* order: 1;  */
+        display: none;
+        /* text-align: center; */
+    }
+    .logo_img {
+        width: 250px; 
+
+    }
+   
+    .menu_auth_name{
+    font-size: 12px; 
+    }
+    .button__menu {
+    padding: 8px 30px;
+    font-size: 14px; 
+    }
+    .button__menu:hover {
+    background-color: grey;
+    color: white;
+  
+
+    
+}
+ 
+}
+/* Settings mobile  HEADER END*/
+
+
+/* Settings mobile  FOOTER START*/
+@media screen and (max-width: 768px) { 
+    .footer__wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__left-part,
+    .footer__right-part {
+        margin-bottom: 10px;
+    }
+}
+/* Settings mobile  FOOTER END*/
