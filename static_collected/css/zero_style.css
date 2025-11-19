@@ -74,10 +74,10 @@ html {
 a {
     outline: none;
     text-decoration: none;
-    width: 19.5%;
-    margin-right: 0.625%;
+    /* width: 19.5%; */
+    /* margin-right: 0.625%; */
     text-align: center;
-    line-height: 3;
+    /* line-height: 3; */
     color: black;
-    padding: 10px;
+    /* padding: 10px; */
     }

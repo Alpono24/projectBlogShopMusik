@@ -55,17 +55,20 @@
 
     <div class="container">
         <main>
-            <div class="wrapper">
+
                 {% block content %}
                 <!-- Здесь дочерние шаблоны вставят свой HTML -->
                 {% endblock %}
-            </div>
+
         </main>
 
         <footer class=footer>
             <div class="footer__wrapper">
-                <div class="footer__left-part"><pre>2025 Учебный проект Django BlogShopMusic: 
-Alpono24</pre></div>
+                <div class="footer__left-part">
+                    <p>2025 Учебный проект Django BlogShopMusic:</p>
+                    <p>Alpono24</p>
+                    <p>alex.ponovarov@mail.ru</p>
+                </div>
                 <div class="footer__right-part"><a class="buttonSimp"  href="{% url 'blog:send_email' %}">Напишите мне</a></div>
             </div>
         </footer>

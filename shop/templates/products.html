@@ -5,91 +5,92 @@
 {% block title %}Список товаров{% endblock %}
 
 {% block content %}
-<div class="products__title-box">
-    <h1 class="title_page">{{ title }}</h1>
-    <div><a class="product__button product__button-cont" href="{% url 'products:cart_view' %}">Корзина 🛒</a></div>
-</div>
-
-<!-- CODE SEARCH START -->
-<form method="get" class="search-form">
-    <div class="search-container">
-        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск названию товара..." class="search-input">
-        <button class="search-button" type="submit">🔍 Найти</button>
+<div class="wrapper wrapper_shop">
+    <div class="products__title-box">
+        <h1 class="title_page">{{ title }}</h1>
+        <div><a class="product__button-cart" href="{% url 'products:cart_view' %}">Корзина 🛒</a></div>
     </div>
-</form>
-<!-- CODE SEARCH END -->
+
+    <!-- CODE SEARCH START -->
+    <form method="get" class="search-form">
+        <div class="search-container">
+            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск названию товара..." class="search-input">
+            <button class="search-button" type="submit">🔍 Найти</button>
+        </div>
+    </form>
+    <!-- CODE SEARCH END -->
 
 
 
-<!-- CODE CATEGORY START -->
-<div class="shop_category__styles">
-    <strong>Категории:</strong>
-    <a  class="shop_category__buttons"href="{% url 'shop:products' %}">Все</a>
-    {% for category in categories %}
-    <a  class="shop_category__buttons" href="?category={{ category.id }}" >
-        {{ category.name }}
-    </a>
-    {% endfor %}
-</div>
-<!-- CODE CATEGORY END -->
+    <!-- CODE CATEGORY START -->
+    <div class="shop_category__styles">
+        <strong>Категории:</strong>
+        <a  class="shop_category__buttons"href="{% url 'shop:products' %}">Все</a>
+        {% for category in categories %}
+        <a  class="shop_category__buttons" href="?category={{ category.id }}" >
+            {{ category.name }}
+        </a>
+        {% endfor %}
+    </div>
+    <!-- CODE CATEGORY END -->
 
 
 
-<div class="shop__cards-wrapper">
-    {% for product in page_obj %}
-        <div class="shop__card-wrapper">
-            {% if product.image %}
-                <img class='products__card_img' src="{{ product.image.url }}" alt="{{ product.name}}">
-            {% else %}
-                <img class='products__card_img' src="{% static 'no-image.png' %}" alt="Нет фото">
-            {% endif %}
+    <div class="shop__cards-wrapper">
+        {% for product in page_obj %}
+            <div class="shop__card-wrapper">
+                {% if product.image %}
+                    <img class='products__card_img' src="{{ product.image.url }}" alt="{{ product.name}}">
+                {% else %}
+                    <img class='products__card_img' src="{% static 'no-image.png' %}" alt="Нет фото">
+                {% endif %}
 
-            <div class="card-body">
-                <h5 class="product__name">{{ product.name }}</h5>
-                <p class="product__description">{{ product.description|truncatewords:15 }}</p>
-                
-                <!-- Новое: объединяем нижнюю часть -->
-                <div class="card-footer">
-                    <p class="product__price">{{ product.price }} руб.</p>
-                    {% if product.in_stock %}
-                        <span class="product__in-stock">В наличии</span>
-                    {% else %}
-                        <span class="product__not-in-stock">Нет в наличии</span>
-                    {% endif %}
-                    
-                    <div class="product__more">
-                        <a class="product__button-more" href="{% url 'products:product_detail' product.id %}" >Подробнее</a>
+                <div class="card-body">
+                    <h5 class="product__name">{{ product.name |truncatewords:3  }}</h5>
+                    <!-- <p class="product__description">{{ product.description|truncatewords:15 }}</p> -->
+
+                    <!-- Новое: объединяем нижнюю часть -->
+                    <div class="card-footer">
+                        <p class="product__price">{{ product.price }} руб.</p>
+                        {% if product.in_stock %}
+                            <span class="product__in-stock">В наличии</span>
+                        {% else %}
+                            <span class="product__not-in-stock">Нет в наличии</span>
+                        {% endif %}
+
+                        <div class="product__more">
+                            <a class="product__button-more" href="{% url 'products:product_detail' product.id %}" >Подробнее</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% empty %}
-        <p class="product__alert">Нет доступных товаров.</p>
-    {% endfor %}
-</div>
-<!-- CODE PRODUCT END -->
+        {% empty %}
+            <p class="product__alert">Нет доступных товаров.</p>
+        {% endfor %}
+    </div>
+    <!-- CODE PRODUCT END -->
 
 
 
-<!-- CODE PAGINATION START -->
-<nav>
-    <ul class="pagination">
-    {% if page_obj.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
-    {% endif %}
-    {% for num_page in page_obj.paginator.page_range %}
-        {% if num_page == page_obj.number %}
-            <li class="page-item active"><a class="page-link" href="#">{{ num_page }}</a></li>
-        {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ num_page }}">{{ num_page }}</a></li>
+    <!-- CODE PAGINATION START -->
+    <nav>
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
         {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
-    {% endif %}
-    </ul>
-</nav>
-<!-- CODE PAGINATION END -->
+        {% for num_page in page_obj.paginator.page_range %}
+            {% if num_page == page_obj.number %}
+                <li class="page-item active"><a class="page-link" href="#">{{ num_page }}</a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num_page }}">{{ num_page }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+    <!-- CODE PAGINATION END -->
 
-
+</div>
 {% endblock %}

@@ -5,7 +5,7 @@
 
 {% block content %}
 
-
+<div class="wrapper">
   <div class="post__card-wrapper">
         <h2 class="post__title-detail">{{post.title}}</h2>
         <div class="post__body">{{post.body}}</div>
@@ -28,4 +28,5 @@
             <div><a class="buttonSimp" href="{% url 'blog:delete_post' post.id %}">Удалить пост</a></div>
         </div>
     </div>
+</div>
 {% endblock %}

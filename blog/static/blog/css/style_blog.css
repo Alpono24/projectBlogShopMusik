@@ -1,11 +1,25 @@
-
+product__button
 
 /*Style POST START*/
+
+.posts__title-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+
 .post__title-all{
-font-size: 26px;
-font-weight: 700;
+font-family: 'Roboto', sans-serif;
+text-transform: uppercase;
+letter-spacing: 8px;
 text-align: center;
-color: black;
+font-size: 22px;
+font-weight: 600;
+color: #000000;
+margin-bottom: 5px;
+
 }
  .post__title-box{
 display: flex;
@@ -53,7 +67,7 @@ width: 100%;
 height: auto;
 object-fit: cover;
 }
-/*Style POST START*/
+/*Style POST END*/
 
 
 
@@ -71,6 +85,9 @@ object-fit: cover;
 
 /*Style POST_DETAIL START*/
 .post__title-detail{
+font-family: 'Roboto', sans-serif;
+text-transform: uppercase;
+letter-spacing: 8px;
 font-size: 26px;
 font-weight: 700;
 text-align: center;
@@ -108,39 +125,47 @@ object-fit: contain;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-bottom: 30px;
+    
 }
 
 .post__category_buttons strong {
-    display: inline-flex;    /* Ведёт себя аналогично кнопкам */
-    align-items: center;     /* Центровка по вертикали */
-    justify-content: center; /* Центрирование по горизонтали */
-    padding: 6px 12px;       /* Соответствующие отступы */
-    margin-right: 10px;      /* Правильный отступ справа */
-    font-size: 14px;
-    color: #000000;
-    text-transform: uppercase;
+       display: inline-flex;    
+      justify-content: center; 
+      padding: 6px 12px;      
+      margin-right: 10px;      
+      font-size: 14px;
+      color: #000000;
+      text-transform: uppercase;
 }
 
-.post__category_buttons {
-    display: inline-flex;
+.post__category_buttons { 
+   display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 6px 12px;
-    background-color: #b99e75; 
+    background-color: #000000; 
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 14px;
-    /* font-weight: bold; */
     text-transform: uppercase;
-    /* letter-spacing: 1px; */
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s;
 }
 
 .post__category_buttons:hover {
-    background-color: #0056b3; 
+    background-color: #ffffff; 
+    color: #000000;
+    border: 1px dotted;
 }
 /*Style POST_CATEGORY END*/
+
+
+
+
+
+
+
 
 
 

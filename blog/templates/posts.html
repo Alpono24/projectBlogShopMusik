@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div><a class="buttonSimpForm" href="{% url 'blog:add_post' %}">Добавить статью</a></div>
-    <h1 class="title_page">{{ title }}</h1>
+
+
+<div class="wrapper">
+    <div class="posts__title-box">
+        <h1 class="title_page">{{ title }}</h1>
+        <a class="button__add-post" href="{% url 'blog:add_post' %}">Добавьте свою статью</a>
+    </div>
 
 
        <!-- ПОЛЕ ПОИСКА СТАТЬИ СТАРТ -->
@@ -79,5 +84,5 @@
     </nav>
     <!-- ПАГИНАЦИЯ ФИНИШ -->
 
-
+</div>
 {% endblock %}

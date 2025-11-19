@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # Your other apps here
-
+    #  Settings Django Debug Toolbar (pip install django-debug-toolbar)
+    'debug_toolbar',
 
     'whitenoise.runserver_nostatic',
     'blog',
@@ -70,7 +71,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
 ]
-
+CACHE_MIDDLEWARE_SECONDS = 3600
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,11 +81,22 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    # Средства кеширования
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
+    #  Settings Django Debug Toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # AllAuth Account middleware
     'allauth.account.middleware.AccountMiddleware',
 
 ]
 
 ROOT_URLCONF = 'apps.urls'
+
+
+#  Settings Django Debug Toolbar
+INTERNAL_IPS = ['127.0.0.1', '::1']
 
 TEMPLATES = [
     {
@@ -200,12 +212,36 @@ TIME_ZONE  = os.environ.get('TIME_ZONE')
 USE_TZ = os.environ.get('USE_TZ')
 
 
-#Настройка кэша
+#Настройка кэша MEMCACHED
+# CACHES = {
+#     'default': {
+#         "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+#         "LOCATION": "127.0.0.1:11211",
+#     }
+# }
+#Настройка кэша REDIS
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379/1',
+#     }
+# }
+# Настройка кэша DJANGO
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "my_cache_table",
     }
 }
+
+#Настройка кэша LocMem -  не подходит для Production
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#     }
+# }
+
+
 
 #Настройка почтового клиента (Django settings):
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -220,12 +256,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Адрес отправителя по �
 SERVER_EMAIL = EMAIL_HOST_USER        # Адрес для служебных сообщений
 
 
-#Настройка кэша
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
+
 
 #Settings for DRF and JWT  - START
 from datetime import timedelta

@@ -3,6 +3,11 @@
     color: #000;
 } */
 
+.wrapper_music{
+background: rgb(199, 195, 195);
+
+}
+
 .music_category__styles {
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +22,7 @@
     padding: 6px 12px;       /* Соответствующие отступы */
     margin-right: 10px;      /* Правильный отступ справа */
     font-size: 14px;
-    color: #000000;
+    color: #ffffff;
     text-transform: uppercase;
 }
 
@@ -31,14 +36,14 @@
     text-decoration: none;
     border-radius: 5px;
     font-size: 14px;
-    /* font-weight: bold; */
     text-transform: uppercase;
-    /* letter-spacing: 1px; */
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s;
 }
 
 .music__category_buttons:hover {
-    background-color: #0056b3; 
+    background-color: #ffffff; 
+    color: #000000;
+    border: 1px dotted;
 }
 /*Style POST_CATEGORY END*/
 
@@ -52,13 +57,16 @@
 }
 
 .music__card-wrapper {
+    background-color: #201d1d;
     aspect-ratio: 1 / 1.25;
     display: flex; /*note*/
     flex-direction: column; /*note*/
     justify-content: space-between; /*note*/
     height: 100%; /*note*/
+    color: white;
+    font-size: 14px;
 
-    width: calc(33.33% - 15px);
+    width: calc(20% - 15px);
     max-width: 300px;
     border-radius: 5px;
     overflow: hidden;
@@ -69,6 +77,9 @@
 
 .music__card-wrapper:hover {
     transform: scale(1.05);
+    color: yellow;
+    box-shadow: 0 0 10px 0;
+
 }
 
 .music__imgs-wrapper img {
@@ -80,7 +91,7 @@
     margin-bottom: auto;  /*note*/   
 }
 .music__song-wrapper {
-    padding: 10px;
+    padding: 5px;
     flex-shrink: 0;  /*note*/
     align-self: stretch; /*note*/
 }
@@ -101,8 +112,10 @@
 
 
 .music__song-audio {
+    height: 18px;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
+    background-color: #201d1d;
 }
 
 .music__no-songs-available {

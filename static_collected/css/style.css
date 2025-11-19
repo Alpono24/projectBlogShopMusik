@@ -12,8 +12,7 @@ main{
 .body__base {
     font-family: Arial, sans-serif;
     background-color: #66CC99;
-    /* background-color: whitesmoke;
-    background-color: black; */
+    background: rgba(17, 16, 16, 0.568);
     height: 100%; /*для фиксации Футера */
 }
 /*Style COMMON END*/
@@ -23,12 +22,12 @@ main{
     font-family: Arial, sans-serif;
     font-weight: bold;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
-    padding-bottom: 0.2rem;
+    height: 60px;
+
 
     position: fixed;
     top: 0;
@@ -41,11 +40,13 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 .menu_register{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 }
 .menu_auth_name{
     font-weight: 100;
@@ -76,7 +77,6 @@ main{
 
 /*Style wrapper START*/
 .wrapper {
-
     max-width: 900px;
     margin: 0 auto;
     background-color: white;
@@ -84,28 +84,22 @@ main{
     padding: 20px 20px;
     border-radius: 5px;
     box-shadow: 0 0 8px 0;
-    margin-top: 55px;
+    margin-top: 68px;
     margin-bottom: 10px;
 }
 /*Style wrapper END*/
 
 
-/*Style category START*/
-.category__styles{
-margin-bottom: 35px;
-}
-/*Style category START*/
-
-
-
 /*Style COMMON START*/
 .title_page{
-text-align: center;
-font-size: 30px;
-font-weight: 700;
-color: #696969;
-color: #619e27;
-margin-bottom: 35px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    color: #000000;
+    margin-bottom: 15px;
 }
 
 
@@ -122,8 +116,8 @@ margin-bottom: 35px;
     text-align: center;
     color: white;
     font-size: 16px;
-    padding: 10px 0;
-    min-height: 50px;
+    padding: 20px 20px;
+    min-height: 80px;
 }
 
 .container{
@@ -151,26 +145,31 @@ margin-bottom: 35px;
 /* Settings mobile  HEADER START*/
 @media screen and (max-width: 850px) {
     .wrapper {
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
     background-color: white;
     padding: 5px 5px;
     border-radius: 2px; 
     box-shadow: 0 0 8px 0; 
-    margin-top: 80px;
+    margin-top: 85px;
     margin-bottom: 20px;
     }
     .header {
         flex-direction: column; 
         align-items: stretch;
+        height: 80px;
+      
+   
     }
     .menu {
         display: flex;
         flex-wrap: wrap; 
         justify-content: center; 
+        margin-top: 10px; /* отступ для адаптива*/
     }
     .menu_register{
-    justify-content: flex-end;
+        justify-content: flex-end;
+        margin-bottom: 10px; 
 
     }
 

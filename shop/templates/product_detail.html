@@ -4,42 +4,43 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
+<div class="wrapper wrapper_shop">
+    <h1 class="title_page">{{ product.name }}</h1>
 
-<h1 class="title_page">{{ product.name }}</h1>
+    <div class="product__card-wrapper">
 
-<div class="product__card-wrapper">
-
-    <div class="product__img-block">
-        {% if product.image %}
-            <img class="product__img-img" src="{{ product.image.url }}"  alt="{{ product.name }}">
-        {% else %}
-            <img class="product__img-img"src="{% static 'no-image.png' %}" alt="Нет фото">
-        {% endif %}
-    </div>
-
-
-    <div class="product__card">
-
-        <div class="product__card-container">
-            <h2 class="product_card__name">{{ product.name }}</h2>
-            <p class="product_card__description">{{ product.description }}</p>
-
-            <p class="product_card__price"><strong>Цена:</strong> {{ product.price }} руб.</p>
-
-            {% if product.in_stock %}
-                <p><span class="product__in-stock">В наличии</span></p>
+        <div class="product__img-block">
+            {% if product.image %}
+                <img class="product__img-img" src="{{ product.image.url }}"  alt="{{ product.name }}">
             {% else %}
-                <p><span class="product__not-in-stock">Нет в наличии</span></p>
+                <img class="product__img-img"src="{% static 'no-image.png' %}" alt="Нет фото">
             {% endif %}
         </div>
 
-        <div class="product__card-buttons">
-            <form method="post" action="{% url 'shop:add_to_cart' product.id %}">
-                {% csrf_token %}
-                <button type="submit" class="product__button product__button-cont">Добавить в корзину</button>
-            </form>
 
-            <a href="{% url 'shop:products' %}" class="product__button product__button-del">Назад к товарам</a>
+        <div class="product__card">
+
+            <div class="product__card-container">
+                <h2 class="product_card__name">{{ product.name }}</h2>
+                <p class="product_card__description">{{ product.description }}</p>
+
+                <p class="product_card__price"><strong>Цена:</strong> {{ product.price }} руб.</p>
+
+                {% if product.in_stock %}
+                    <p><span class="product__in-stock">В наличии</span></p>
+                {% else %}
+                    <p><span class="product__not-in-stock">Нет в наличии</span></p>
+                {% endif %}
+            </div>
+
+            <div class="product__card-buttons">
+                <form method="post" action="{% url 'shop:add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="product__button product__button-cont">Добавить в корзину</button>
+                </form>
+
+                <a href="{% url 'shop:products' %}" class="product__button product__button-del">Назад к товарам</a>
+            </div>
         </div>
     </div>
 </div>

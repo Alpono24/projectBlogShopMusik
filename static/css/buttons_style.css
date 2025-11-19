@@ -3,7 +3,6 @@
 /*Style buttons menu START*/
 .button__menu {
     font-family: 'Roboto', sans-serif;
-    
     background-color: #ffffff;
     border: 1px dotted;
     color: black;
@@ -92,20 +91,48 @@ transform: scale(1.05);
 
 
 /*Style POST START*/
-.post__button-more{
-    background-color: #9d9d9d;;
+.button__add-post {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    border: 1px dotted;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button__add-post:hover{
+    background-color: #000000;
     color: #ffffff;
+}
+
+
+.post__button-more{
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    border: 1px dotted;
+    color: black;
     padding: 3px 10px;
-    border-radius: 3px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 
 .post__button-more:hover{
-background-color: #9d9d9d;
-color: yellow;
-box-shadow: 0 0 10px 0;
-transition: background-color 0.3s ease;
-transform: scale(1.05);
+    background-color: #000000;
+    color: #ffffff;
 }
+
+
 
 /*Style POST END*/

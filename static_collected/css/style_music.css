@@ -1,0 +1,131 @@
+/*Style POST_CATEGORY START*/
+/* .title_page {
+    color: #000;
+} */
+
+.wrapper_music{
+background: rgb(199, 195, 195);
+
+}
+
+.music_category__styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.music__category_buttons strong {
+    display: inline-flex;    /* Ведёт себя аналогично кнопкам */
+    align-items: center;     /* Центровка по вертикали */
+    justify-content: center; /* Центрирование по горизонтали */
+    padding: 6px 12px;       /* Соответствующие отступы */
+    margin-right: 10px;      /* Правильный отступ справа */
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.music__category_buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: #020e1a; 
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.music__category_buttons:hover {
+    background-color: #ffffff; 
+    color: #000000;
+    border: 1px dotted;
+}
+/*Style POST_CATEGORY END*/
+
+
+.music__cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+}
+
+.music__card-wrapper {
+    background-color: #201d1d;
+    aspect-ratio: 1 / 1.25;
+    display: flex; /*note*/
+    flex-direction: column; /*note*/
+    justify-content: space-between; /*note*/
+    height: 100%; /*note*/
+    color: white;
+    font-size: 14px;
+
+    width: calc(20% - 15px);
+    max-width: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: transform .3s ease-in-out;
+    cursor: pointer;
+}
+
+.music__card-wrapper:hover {
+    transform: scale(1.05);
+    color: yellow;
+    box-shadow: 0 0 10px 0;
+
+}
+
+.music__imgs-wrapper img {
+    width: 100%;
+    height: auto;
+}
+.music__imgs-wrapper{
+    flex-shrink: 0; /*note*/
+    margin-bottom: auto;  /*note*/   
+}
+.music__song-wrapper {
+    padding: 5px;
+    flex-shrink: 0;  /*note*/
+    align-self: stretch; /*note*/
+}
+
+.music__song-title {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.music__song-artist
+.music__song-album
+.music__song-genre{
+    font-weight: 900;
+    color: #000;
+}
+
+
+
+.music__song-audio {
+    height: 18px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #201d1d;
+}
+
+.music__no-songs-available {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px
+}
+
+@media screen and (max-width: 768px) {
+    .music__card-wrapper {
+        width: 100%;
+    }
+}

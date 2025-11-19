@@ -2,13 +2,13 @@
 {% load static %}
 {% block title %}Музыка{% endblock %}
 {% block content %}
-
+<div class="wrapper wrapper_music">
     <h1 class="title_page">{{ title }}</h1>
 
    <!-- ПОЛЕ ПОИСКА ПЕСНИ СТАРТ -->
     <form method="get" class="search-form">
         <div class="search-container">
-            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск по песне или артисту или альбому или по жанру.."
+            <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Что хочешь включить?"
                    class="search-input">
             <button class="search-button" type="submit">🔍 Найти</button>
         </div>
@@ -48,9 +48,10 @@
                         <div class="music__info_song">
                             <h5 class="music__song-title">{{ song.title }}</h5>
                             <p class="music__song-info">
-                                <strong class="music__song-artist">Артист:</strong> {{ song.artist.name}} <br>
-                                <strong class="music__song-album">Альбом:</strong> {{ song.album.title }} <br>
-                                <strong class="music__song-genre">Жанр:</strong> {{ song.genre.name }}
+<!--                                <strong class="music__song-album"></strong> {{ song.album.title }} <br>-->
+                                <strong class="music__song-artist"></strong> {{ song.artist.name}} <br>
+
+<!--                                <strong class="music__song-genre">Жанр:</strong> {{ song.genre.name }}-->
                             </p>
                             {% if song.audio_file %}
                                 <audio  class="music__song-audio" controls preload="none">
@@ -65,7 +66,7 @@
                 
             </div>
         {% empty %}
-            <p class="music__no-songs-available">Нет доступных песен.</p>
+            <p class="music__no-songs-available">Тут такого нет ещё.</p>
         {% endfor %}
     </div>
     <!-- СПИСОК ПЕСЕН ФИНИШЬ -->
@@ -90,7 +91,7 @@
       </ul>
     </nav>
     <!-- ПАГИНАЦИЯ ФИНИШ -->
-
+</div>
 
 {% endblock %}
 

@@ -12,6 +12,7 @@ main{
 .body__base {
     font-family: Arial, sans-serif;
     background-color: #66CC99;
+    background: rgba(17, 16, 16, 0.568);
     height: 100%; /*для фиксации Футера */
 }
 /*Style COMMON END*/
@@ -91,15 +92,14 @@ main{
 
 /*Style COMMON START*/
 .title_page{
-font-family: 'Roboto', sans-serif;
-text-transform: uppercase;
-letter-spacing: 5px;
-text-align: center;
-font-size: 25px;
-font-weight: 900;
-color: #696969;
-color: #619e27;
-margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    color: #000000;
+    margin-bottom: 15px;
 }
 
 
