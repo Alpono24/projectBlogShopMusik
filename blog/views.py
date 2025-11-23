@@ -29,7 +29,7 @@ def posts(request):
 
 
     # Пагинация
-    paginator = Paginator(posts, 10)  # показать по 10 постов на страницу
+    paginator = Paginator(posts, 5)  # показать по 10 постов на страницу
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'title': title, 'categories': categories, 'page_obj': page_obj}

@@ -39,7 +39,6 @@
         {% for post in page_obj %}
             <div class="post__card-wrapper">
                     <div class="post__title-box">
-                        {% csrf_token %}
                         <div><h2 class="post__title-all">{{post.title}}</h2></div>
                         <div><a class="post__button-more" href="{% url 'blog:post_detail' post.id %}">Подробнее</a></div>
                     </div>

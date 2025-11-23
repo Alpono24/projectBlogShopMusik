@@ -81,9 +81,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # Средства кеширования
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    # # Средства кеширования
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 
     #  Settings Django Debug Toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -227,12 +227,12 @@ USE_TZ = os.environ.get('USE_TZ')
 #     }
 # }
 # Настройка кэша DJANGO
-CACHES = {
-    'default': {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "my_cache_table",
-    }
-}
+# CACHES = {
+#     'default': {
+#         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+#         "LOCATION": "my_cache_table",
+#     }
+# }
 
 #Настройка кэша LocMem -  не подходит для Production
 # CACHES = {
@@ -240,7 +240,11 @@ CACHES = {
 #         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
 #     }
 # }
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 
 
 #Настройка почтового клиента (Django settings):
@@ -258,25 +262,29 @@ SERVER_EMAIL = EMAIL_HOST_USER        # Адрес для служебных с�
 
 
 
-#Settings for DRF and JWT  - START
-from datetime import timedelta
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # можно оставить SessionAuthentication для веб-страниц, если нужно:
-        # 'rest_framework.authentication.SessionAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',  # по умолчанию защищаем все API
-    )
-}
+# #Settings for DRF and JWT  - START
+# from datetime import timedelta
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#         # можно оставить SessionAuthentication для веб-страниц, если нужно:
+#         # 'rest_framework.authentication.SessionAuthentication',
+#     ),
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',  # по умолчанию защищаем все API
+#     )
+# }
+#
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+#     'ROTATE_REFRESH_TOKENS': False,   # если True — при refresh выдается новый refresh
+#     'BLACKLIST_AFTER_ROTATION': True, # требует token_blacklist app
+#     'ALGORITHM': 'HS256',
+#     # опционально укажи SECRET_KEY, по умолчанию используется Django SECRET_KEY
+# }
+# #Settings for DRF and JWT  - FINISH
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': False,   # если True — при refresh выдается новый refresh
-    'BLACKLIST_AFTER_ROTATION': True, # требует token_blacklist app
-    'ALGORITHM': 'HS256',
-    # опционально укажи SECRET_KEY, по умолчанию используется Django SECRET_KEY
-}
-#Settings for DRF and JWT  - FINISH
+
+
+CSRF_COOKIE_HTTPONLY = False  # разрешаем доступ к токену через JavaScript

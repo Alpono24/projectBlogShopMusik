@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Музыка{% endblock %}
+{% block content %}
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+
+
+<div class="wrapper wrapper_music">
+
+   
+        <div class="artist_blok-title">
+            <div class="artist_blok-title-img">
+                <img class="artist_img" src="{{ artist.image.url  }}"  alt="{{ album.title }}">
+            </div>  
+
+            <div class="artist_blok-title-text">
+                <div><h1 class="artist_songs-title">{{ artist.name }}</h1></div>
+                <div class="artist_songs-number">Количество песен: {{ number_of_songs }}</div>
+            </div>
+
+            <div class="artist_songs-back">
+               <a class="artist_songs-back-btn" href="{% url 'music:music' %}">Назад</a> 
+            </div>
+
+        </div>
+
+        {% for song in songs %}
+        <div class="artist_song-wrapper"> 
+            <div class="artist_song-audio">
+                    {% if song.audio_file %}
+                    <audio  class="music__song-audio" controls preload="none">
+                        <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио.
+                    </audio>
+                {% else %}
+                    <p class="music__song-audio-absent">Аудиофайл отсутствует</p>
+                {% endif %}
+            </div>
+            <div class="artist_song-info">
+                    <p class="artist_song-info-artist">{{ song.artist }}</p>
+                    <p class="artist_song-info-artist">{{ song.title }}</p>
+                    <p class="artist_song-info-artist">Альбом: {{ song.album.title|default:"нет альбома" }}</p> 
+            </div>
+
+            <!-- <div class="artist_songs-like">Like <a href="#" data-type="song" data-id="{{ song.id }}" data-vote="like" class="btn-like">💖</a></div>
+            <div class="artist_songs-dislike">Dislike <a href="#" data-type="song" data-id="{{ song.id }}" data-vote="dislike" class="btn-dislike">👎</a></div> -->
+            <div class="artist_songs-add-to-playlist"></div>
+              <div class="artist_songs-like">
+                  Like <a href="#" data-type="song" data-id="{{ song.id }}" data-vote="like" class="btn-like">💖</a>
+              </div>
+              <div class="artist_songs-dislike">
+                  Dislike <a href="#" data-type="song" data-id="{{ song.id }}" data-vote="dislike" class="btn-dislike">👎</a>
+              </div>
+          </div> 
+
+        {% empty %}
+            <p class="music__song-audio-absent">У этого исполнителя пока нет песен.</p>
+        {% endfor %}
+
+
+  </div>
+{% endblock %}
+
+
+
+

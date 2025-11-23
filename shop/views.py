@@ -18,7 +18,7 @@ def products_view(request):
         products = Product.objects.filter(
             Q(name__icontains=query)
         ).distinct()
-    paginator = Paginator(products, 10)
+    paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

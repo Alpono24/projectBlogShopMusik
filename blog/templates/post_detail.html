@@ -21,7 +21,6 @@
         </div>
 
         <div class="post_choice-menu">
-             {% csrf_token %}
             <div><a class="buttonSimp"  href="{% url 'blog:posts' %}">На главную</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:edit_post' post.id %}">Редактировать пост</a></div>
             <div><a class="buttonSimp"  href="{% url 'blog:send_email' %}">Отправить сообщение владельцу</a></div>

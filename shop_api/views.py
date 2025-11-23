@@ -68,7 +68,7 @@ class ProductListAPIView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    @method_decorator(cache_page(3600))
+    @method_decorator(cache_page(2))
     def get(self, request):
         print('>>>get')
         products = Product.objects.all()

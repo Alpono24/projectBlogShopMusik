@@ -31,8 +31,14 @@
         </div>
     <!-- ФИЛЬТР ПО ЖАНРАМ ФИНИШ -->
 
-    <!-- СПИСОК ПЕСЕН СТАРТ -->
 
+
+
+
+
+
+    <!-- СПИСОК ПЕСЕН СТАРТ -->
+    <h2 class="music__best-track">Популярные треки</h2>
     <div class="music__cards-wrapper">
         {% for song in songs %}
             <div class="music__card-wrapper">
@@ -70,6 +76,58 @@
         {% endfor %}
     </div>
     <!-- СПИСОК ПЕСЕН ФИНИШЬ -->
+
+
+
+
+     <!-- АЛЬБОМЫ ФИНИШ -->
+    <h2 class="music__best-album">Популярные альбомы</h2>
+    <div class="music__cards-wrapper">
+
+
+        {% for album in albums %}
+            <div class="music__card-wrapper">
+                {% if album.cover %}
+                    <img class="music__img_album" src="{{ album.cover.url }}"  alt="{{ album.title }}">
+                {% else %}
+                    <img class="music__img_album" src="{% static 'no-image.png' %}" alt="Нет изображения">
+                {% endif %}
+                <h5 class="music__album-title">{{album.title}}</h5>
+                <a class="music__artist-title_link" href="{% url 'music:music' %}"></a>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!-- АЛЬБОМЫ ФИНИШ -->
+
+
+
+
+
+    <!-- Популярные исполнители ФИНИШ -->
+    <h2 class="music__best-artist">Популярные исполнители</h2>
+    <div class="music__cards-wrapper">
+
+        {% for artist in artists %}
+            <div class="music__card-wrapper">
+                    <div class="music__imgs-wrapper">
+                            {% if artist.image %}
+                                <img class="music__img_album" src="{{ artist.image.url }}"  alt="{{ album.title }}">
+                            {% else %}
+                                <img class="music__img_album" src="{% static 'no-image.png' %}" alt="Нет изображения">
+                            {% endif %}
+                    </div>
+                    <div class="music__song-wrapper music__song-wrapper-link">
+                        <h5 class="music__artist-title">{{ artist.name }}</h5>
+                    </div>
+                    <a class="music__artist-title_link" href="{% url 'music:artist_songs_view' artist.id %}">Подробнее</a>
+
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Популярные исполнители ФИНИШ -->
+
+
 
 
     <!-- ПАГИНАЦИЯ СТАРТ -->

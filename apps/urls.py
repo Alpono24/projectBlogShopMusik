@@ -45,6 +45,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
+
 #  Settings Django Debug Toolbar START
 from django.urls import path, include
 if settings.DEBUG:
