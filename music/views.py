@@ -8,7 +8,7 @@ from .models import Genre, Song, Album, Artist, Vote
 
 @login_required(login_url='/registration/login/')
 def music(request):
-    title = "Музыка"
+    title = "Музыкальный Спотифай"
     genres = Genre.objects.all()
     genre_id = request.GET.get('genre')
     query = request.GET.get('q')

@@ -2,11 +2,22 @@
 /* .title_page {
     color: #000;
 } */
-
+.title_page_music{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 25px;
+    text-align: center;
+}
 .wrapper_music{
-background: black;
+    max-width: 1500px;
+    background: black;
+    min-height: calc(90vh - 60px - 80px);
+}
 
-
+.wrapper_music_detail{
+    background: black;
+    min-height: calc(97vh - 60px - 80px);
 }
 
 .music_category__styles {
@@ -95,7 +106,7 @@ background: black;
     height: 100%;
     color: white;
     font-size: 14px;
-    width: calc(20% - 15px); /* Если нужен фиксированный размер ширины карточек */
+    width: calc(14% - 15px); /* Если нужен фиксированный размер ширины карточек */
     max-width: 300px;
     border-radius: 5px;
     overflow: hidden;
@@ -174,9 +185,9 @@ background: black;
 }
 
 .music__artist-title_link:hover {
-    transform: scale(1.05);
+    transform: scale(1.25);
     color: yellow;
-    box-shadow: 0 0 10px 0;
+    /*box-shadow: 0 0 10px 0;*/
 
 }
 

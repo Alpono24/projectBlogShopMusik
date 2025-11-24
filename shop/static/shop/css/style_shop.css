@@ -1,6 +1,7 @@
 /*Style PRODUCT_CATEGORY START*/
 .wrapper_shop{
   background: rgb(255, 255, 255);
+  min-height: calc(97vh - 60px - 80px);
 }
 .shop_category__styles {
     display: flex;
