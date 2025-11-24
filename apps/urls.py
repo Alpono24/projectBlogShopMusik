@@ -15,20 +15,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+
 
 from django.conf import settings
 from django.conf.urls.static import static
+from drf_yasg import openapi
+from rest_framework import permissions
+from rest_framework.decorators import permission_classes
+from drf_yasg.views import get_schema_view
+from rest_framework.permissions import AllowAny
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', include('blog.urls', namespace='blog')),
-#     path('', include('music.urls')),
-#     path('', include('shop.urls')),
-#     # path('', include('registration.urls')),
-#     path('', include('registration.urls', namespace='registration')),
-#
-# ]
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title = "My API",
+        default_version = 'V1',
+        description = 'Swagger documentation',
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls', namespace='blog')),  # Главное пространство имен для blog
@@ -36,13 +44,30 @@ urlpatterns = [
     path('products/', include('shop.urls', namespace='shop')),  # пространство имен shop
     path('registration/', include('registration.urls', namespace='registration')),  # пространство имен registration
 
-    path('shop_api/', include('shop_api.urls', namespace='shop_api')),  # Главное пространство имен для shop_api
+    path('shop_api/', include('shop_api.urls', namespace='shop_api')),  #  пространство имен для shop_api
 
 ]
 
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [
+        path(
+            "swagger/",
+            schema_view.with_ui("swagger", cache_timeout=0),
+            name="schema-swagger-ui",
+        ),
+        path(
+        "redoc/",
+        schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc",
+        ),
+
+        re_path( r"^swagger(?P<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+         ),
+]
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
@@ -55,3 +80,8 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls)),
     ]
 #  Settings Django Debug Toolbar FINISH
+
+
+
+
+

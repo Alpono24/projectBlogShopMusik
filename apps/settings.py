@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     # опционально для blacklist:
     'rest_framework_simplejwt.token_blacklist',
+    'drf_yasg'
 
 ]
 CACHE_MIDDLEWARE_SECONDS = 3600
@@ -93,7 +94,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'apps.urls'
-
 
 #  Settings Django Debug Toolbar
 INTERNAL_IPS = ['127.0.0.1', '::1']
@@ -154,7 +154,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -211,7 +210,6 @@ LOGOUT_REDIRECT_URL = '/login/'
 TIME_ZONE  = os.environ.get('TIME_ZONE')
 USE_TZ = os.environ.get('USE_TZ')
 
-
 #Настройка кэша MEMCACHED
 # CACHES = {
 #     'default': {
@@ -259,32 +257,40 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Адрес отправителя по умолчанию
 SERVER_EMAIL = EMAIL_HOST_USER        # Адрес для служебных сообщений
 
-
-
-
 # #Settings for DRF and JWT  - START
-# from datetime import timedelta
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
-#         # можно оставить SessionAuthentication для веб-страниц, если нужно:
-#         # 'rest_framework.authentication.SessionAuthentication',
-#     ),
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',  # по умолчанию защищаем все API
-#     )
-# }
-#
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-#     'ROTATE_REFRESH_TOKENS': False,   # если True — при refresh выдается новый refresh
-#     'BLACKLIST_AFTER_ROTATION': True, # требует token_blacklist app
-#     'ALGORITHM': 'HS256',
-#     # опционально укажи SECRET_KEY, по умолчанию используется Django SECRET_KEY
-# }
+from datetime import timedelta
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # можно оставить SessionAuthentication для веб-страниц, если нужно:
+        # 'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  # по умолчанию защищаем все API
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,   # если True — при refresh выдается новый refresh
+    'BLACKLIST_AFTER_ROTATION': True, # требует token_blacklist app
+    'ALGORITHM': 'HS256',
+    # опционально укажи SECRET_KEY, по умолчанию используется Django SECRET_KEY
+}
 # #Settings for DRF and JWT  - FINISH
 
 
 
 CSRF_COOKIE_HTTPONLY = False  # разрешаем доступ к токену через JavaScript
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+}
