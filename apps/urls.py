@@ -45,6 +45,7 @@ urlpatterns = [
     path('registration/', include('registration.urls', namespace='registration')),  # пространство имен registration
 
     path('shop_api/', include('shop_api.urls', namespace='shop_api')),  #  пространство имен для shop_api
+    path('blog_api/', include('blog_api.urls', namespace='blog_api')),  # пространство имен для blog_api
 
 ]
 

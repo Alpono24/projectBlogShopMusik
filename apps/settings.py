@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
     'rest_framework', #Подключение DRF
     'shop_api', #Подключение нового приложения API
+    'blog_api', #Подключение нового приложения API
 
     'rest_framework_simplejwt',
     # опционально для blacklist:
