@@ -24,7 +24,21 @@
                 <h2 class="product_card__name">{{ product.name }}</h2>
                 <p class="product_card__description">{{ product.description }}</p>
 
-                <p class="product_card__price"><strong>Цена:</strong> {{ product.price }} руб.</p>
+                        {% if product.price_in_byn %}
+                            <p class="product_card__price">Цена: {{ product.price_in_byn}} Br</p>
+                        {% else %}
+                            <p class="product__price">Цена в BYN временно недоступна.</p>
+                        {% endif %}
+
+                        {% if product.price_in_eur %}
+                            <p class="product_card__price">{{ product.price_in_eur }} EUR</p>
+                        {% else %}
+                            <p class="product__price">Цена в EUR временно недоступна.</p>
+                        {% endif %}
+
+
+
+                    <p class="product_card__price"><strong></strong> {{ product.price }} $</p>
 
                 {% if product.in_stock %}
                     <p><span class="product__in-stock">В наличии</span></p>

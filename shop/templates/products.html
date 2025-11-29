@@ -35,6 +35,7 @@
     <!-- CODE CATEGORY END -->
 
 
+    <!-- CODE PRODUCT START -->
 
     <div class="shop__cards-wrapper">
         {% for product in page_obj %}
@@ -51,7 +52,23 @@
 
                     <!-- Новое: объединяем нижнюю часть -->
                     <div class="card-footer">
-                        <p class="product__price">{{ product.price }} руб.</p>
+
+                        {% if product.price_in_byn %}
+                            <p class="product__price">{{ product.price_in_byn }} Br</p>
+                        {% else %}
+                            <p class="product__price">Цена в BYN временно недоступна.</p>
+                        {% endif %}
+
+
+                        {% if product.price_in_eur %}
+                            <p class="product__price">{{ product.price_in_eur }} EUR</p>
+                        {% else %}
+                            <p class="product__price">Цена в EUR временно недоступна.</p>
+                        {% endif %}
+
+                        <p class="product__price">{{ product.price }} $</p>
+
+
                         {% if product.in_stock %}
                             <span class="product__in-stock">В наличии</span>
                         {% else %}

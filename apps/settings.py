@@ -295,3 +295,13 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+
+
+#Settings Celery - включение Celery в настройки Django
+CELERY_BROKER_URL = 'redis://localhost:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' # Сервер Redis, хранящий результаты выполненных задач
+CELERY_ACCEPT_CONTENT = ['json'] # Форматы данных, принимаемые брокером (используется JSON)
+CELERY_TASK_SERIALIZER = 'json' # Формат сериализации результатов выполнения задач (JSON)
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Minsk'  # Временная зона Минска - Часовой пояс для планирования задач (Минск)
+
