@@ -29,6 +29,19 @@ class Product(models.Model):
     def apply_discount(self, percent):
         return float(self.price) * (1 - percent / 100)
 
+    def save(self, *args, **kwargs):
+        """
+        Переопределение метода save().
+        Проверяем, новый ли товар и отправляем письмо, если да.
+        """
+        is_new = not self.pk  # True, если pk отсутствует (новый товар)
+        super().save(*args, **kwargs)  # Сохраняем изменения в БД
+
+        if is_new:
+            from .tasks import emails_new_product
+            emails_new_product.delay(self.id, self.name)  # Асинхронная отправка уведомления
+
+
 
 class Category(models.Model):
     objects = models.Manager()

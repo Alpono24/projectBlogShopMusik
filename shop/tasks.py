@@ -2,14 +2,18 @@
 from celery import shared_task  # Импортируем декоратор shared_task для создания фоновых задач в Celery
 from decimal import Decimal # Импортируем класс Decimal
 import requests  # Стандартная библиотека Python для отправки HTTP-запросов
-from shop.models import Product  # Импортируем модель Product из нашего приложения shop
+from .models import Product  # Импортируем модель Product из нашего приложения shop
 
 from celery.schedules import crontab # Импортируется класс crontab для настройки расписания задач по типу cron
 from celery import current_app # Загружается ссылка на текущий экземпляр Celery-приложения, позволяющий получать доступ к общим настройкам и объектам приложения
+from django.core.mail import send_mail  # Импортируем функцию отправки почты из Django
+from django.contrib.auth.models import User # Импортируем стандартную модель пользователя Django
 
+#
 
+#
 @shared_task # Объявляем функцию update_prices_byn как асинхронную задачу Celery
-def update_prices_byn():
+def update_prices_byn_nbrb():
     """
     Задача для автоматической конвертации цен на сайте из долларов США в белорусские рубли на основе курса нацбанка РБ.
     Выполняется каждый час.
@@ -42,11 +46,11 @@ def update_prices_byn():
 # current_app.add_periodic_task(crontab(), update_prices.s())  # Регистрируем задачу, которая выполняется каждую минуту
 
 # Регистрация расписания запуска задачи КАЖДЫЙ ЧАС
-current_app.add_periodic_task(crontab(minute=0, hour='*'), update_prices_byn.s())  # Регистрируем задачу, которая выполняется каждый час ровно в 0 минут
+current_app.add_periodic_task(crontab(minute=0, hour='*'), update_prices_byn_nbrb.s())  # Регистрируем задачу, которая выполняется каждый час ровно в 0 минут
 
 
 @shared_task
-def update_prices_eur():
+def update_prices_eur_nbrb():
     """
     Задача для автоматического обновления цен на сайте в евро на основе информации из базы данных.
     Конвертация происходит после того как появится информация о курсе доллара к белорусскому рублю.
@@ -72,4 +76,31 @@ def update_prices_eur():
     except Exception as e:
         print(f"Ошибка обновления цен: {e}")
 
-current_app.add_periodic_task(crontab(minute=0, hour='*'), update_prices_eur.s())
+current_app.add_periodic_task(crontab(minute=0, hour='*'), update_prices_eur_nbrb.s())
+
+
+
+
+@shared_task
+def emails_new_product(product_id, product_name):
+    """
+    Задача для отправки уведомления на почту пользователей о новом товаре.
+    Письма отправляются на почту зарегистрированных пользователей.
+    """
+    subject = f'Новый товар в нашем магазине: {product_name}'
+    message = f"""
+    Уважаемый покупатель!
+    Мы рады представить Вам новый продукт: {product_name}.
+    Посмотрите подробности на сайте нашего магазина http://127.0.0.1:8080/products/product/{product_id}/ !
+    Спасибо за внимание!
+    """  #
+    from_email = 'alex.ponomarov@mail.ru'
+    emails = list(User.objects.values_list('email', flat=True))  # cписок email адресов всех пользователей
+
+    try:
+        result = send_mail(subject, message, from_email, emails)
+        print(f"Письмо успешно отправлено ({result})")
+    except Exception as e:
+        print(f"Ошибка при отправке письма: {e}")
+
+
