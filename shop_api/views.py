@@ -107,7 +107,7 @@ class ProductCreateAPIView(APIView):
                 },
     )
     def post(self, request):
-        serializer = ProductSerializer(data=request.data)  # десериализация входных данных
+        serializer = ProductSerializer(data=request.data)  # де сериализация входных данных
         if serializer.is_valid():  # проверка данных
             serializer.save()  # создание нового объекта Product
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -145,10 +145,12 @@ class RegisterAPIView(APIView):
         operation_description= "Создание нового аккаунта. Пароль должен быть не менее 8 символов",
         request_body = RegisterSerializer,
         responses ={
-        201: """{
-        "id": 6,
-        "username": "client",
-        "email": "user@example.com"
+        201: """Вот так должно получится. Фиолетовым цветом - нужна пустая строка после этого.
+        
+        { 
+            "id": 6,
+            "username": "client",
+            "email": "user@example.com"
         }""",
         400: "Ошибки валидации данных"
         }

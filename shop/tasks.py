@@ -9,9 +9,7 @@ from celery import current_app # Загружается ссылка на тек
 from django.core.mail import send_mail  # Импортируем функцию отправки почты из Django
 from django.contrib.auth.models import User # Импортируем стандартную модель пользователя Django
 
-#
 
-#
 @shared_task # Объявляем функцию update_prices_byn как асинхронную задачу Celery
 def update_prices_byn_nbrb():
     """
@@ -77,7 +75,6 @@ def update_prices_eur_nbrb():
         print(f"Ошибка обновления цен: {e}")
 
 current_app.add_periodic_task(crontab(minute=0, hour='*'), update_prices_eur_nbrb.s())
-
 
 
 

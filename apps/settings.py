@@ -251,12 +251,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Адрес отправителя по умолчанию
 SERVER_EMAIL = EMAIL_HOST_USER        # Адрес для служебных сообщений
+
 
 # #Settings for DRF and JWT  - START
 from datetime import timedelta
@@ -286,12 +285,17 @@ SIMPLE_JWT = {
 CSRF_COOKIE_HTTPONLY = False  # разрешаем доступ к токену через JavaScript
 
 
+# Этот конфиг настраивает Swagger UI так, чтобы он предлагал ввести токен авторизации при тестировании защищённых эндпоинтов API.
 SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
+    'SECURITY_DEFINITIONS': {  # Определяет типы механизмов защиты (авторизация) для API-документации Swagger
+        'Bearer': {  # Название схемы авторизации, обычно Bearer токены используются для JWT-токенов
+                     # Имя схемы авторизации. Чаще всего используется схема "Bearer Token", когда клиент передает токен в заголовке Authorization с префиксом "Bearer ".
+            'type': 'apiKey',  # Тип механизма авторизации — ключ API
+                               # Это означает, что механизм авторизации основан на передаче ключа API (токена) в запросе. Вместо OAuth или других схем используется простой токен.
+            'name': 'Authorization',  # Имя заголовка HTTP, содержащего токен авторизации
+                                      # Имя заголовка HTTP, в котором указывается токен авторизации. Это стандартный заголовок для передачи токенов Bearer.
+            'in': 'header'  # Место расположения ключа авторизации — заголовок HTTP-запроса
+                            # Токен помещается в заголовок HTTP-запроса. Альтернативные варианты включают cookie или body (для POST-запросов), но чаще всего используется header.
         }
     },
 }
@@ -300,7 +304,8 @@ SWAGGER_SETTINGS = {
 #Settings Celery - включение Celery в настройки Django
 CELERY_BROKER_URL = 'redis://localhost:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' # Сервер Redis, хранящий результаты выполненных задач
-CELERY_ACCEPT_CONTENT = ['json'] # Форматы данных, принимаемые брокером (используется JSON)
+#CELERY_ACCEPT_CONTENT = ['json'] # Форматы данных, принимаемые брокером (используется JSON)
+CELERY_ACCEPT_CONTENT = ['application/json'] # защищает ваше приложение от риска, связанного с небезопасными форматами сериализации, и способствует повышению общей стабильности и производительности
 CELERY_TASK_SERIALIZER = 'json' # Формат сериализации результатов выполнения задач (JSON)
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Minsk'  # Временная зона Минска - Часовой пояс для планирования задач (Минск)
