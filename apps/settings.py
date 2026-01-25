@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import environ
 import os
 from pathlib import Path
-import dj_database_url
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -31,9 +30,11 @@ SECRET_KEY = os.environ.get('MYSQL_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
+
+# ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = []
-
 SITE_ID = 1
 
 # Application definition
@@ -47,14 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_seed',
 
-
     # Other installed applications
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     # Your other apps here
-    #  Settings Django Debug Toolbar (pip install django-debug-toolbar)
     'debug_toolbar',
 
     'whitenoise.runserver_nostatic',
@@ -63,15 +62,13 @@ INSTALLED_APPS = [
     'shop',
     'registration',
 
-    'rest_framework', #Подключение DRF
-    'shop_api', #Подключение нового приложения API
-    'blog_api', #Подключение нового приложения API
+    'rest_framework',
+    'shop_api',
+    'blog_api',
 
     'rest_framework_simplejwt',
-    # опционально для blacklist:
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg'
-
 ]
 CACHE_MIDDLEWARE_SECONDS = 3600
 MIDDLEWARE = [
@@ -91,7 +88,6 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     # AllAuth Account middleware
     'allauth.account.middleware.AccountMiddleware',
-
 ]
 
 ROOT_URLCONF = 'apps.urls'
@@ -116,16 +112,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'apps.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Используем MySQL-драйвер
@@ -136,10 +125,8 @@ DATABASES = {
         'PORT': os.environ.get('MYSQL_DB_PORT', '3306'),  # Порт MySQL (стандартный 3306)
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -158,14 +145,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -310,3 +296,7 @@ CELERY_TASK_SERIALIZER = 'json' # Формат сериализации резу
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Minsk'  # Временная зона Минска - Часовой пояс для планирования задач (Минск)
 
+
+# # Обработчики ошибок
+HANDLER404 = 'shop.views.handler404'
+HANDLER500 = 'shop.views.handler500'

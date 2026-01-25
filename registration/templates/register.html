@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="wrapper">
-    <h1 class="title_page" style="margin-bottom: 80px;">Регистрация</h1>
+    <h1 class="title_page registration__title_page">Регистрация</h1>
 
     <form method="post" action="{% url 'registration:register' %}">
         {% csrf_token %}
@@ -26,7 +26,7 @@
                     </div>
 
 
-        <div style="margin-top: 200px;" class = 'pageRegisterButton'>
+        <div  class = 'pageRegisterButton'>
             <div><button class="buttonSimpForm" type="submit">Зарегистрироваться</button></div>
             <div>Уже есть аккаунт? <a class="buttonSimp" href="{% url 'registration:login' %}">Войти</a></div>
         </div>

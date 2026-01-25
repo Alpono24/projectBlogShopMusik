@@ -3,7 +3,7 @@
 {% block content %}
 <div class="wrapper">
     <h1>{{ title }}</h1>
-    <h1 class="title_page" style="margin-bottom: 200px;">Вы действительно хотите удалить пост "{{ post.title }}"?</h1>
+    <h1 class="title_page" style="color:red; margin-top: 150px; margin-bottom: 350px;">Вы действительно хотите удалить пост "{{ post.title }}"?</h1>
     <form method="post">
         {% csrf_token %}
         <div class = 'pageEditPostButton'>

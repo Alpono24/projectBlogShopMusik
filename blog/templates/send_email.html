@@ -8,7 +8,7 @@
     <!-- Используем метод POST -->
 
 
-    <form class="send_emailForm" method="post" action="{% url 'blog:send_email' %}">
+    <form class="send_emailForm" method="post" action="{% url 'blog:send_email_back' %}">
         {% csrf_token %}
         <label for="subject">Тема:</label>
         <input class="textForm" type="text" id="subject" name="subject">

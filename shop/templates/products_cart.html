@@ -1,43 +1,80 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% block title %}Корзина{% endblock %}
 
 {% block content %}
 <div class="wrapper wrapper_shop">
-    <h1 class="title_page title_page-products-basket">🛒 Ваша корзина 🛒</h1>
 
+    <div class="course_style">
+        <div>Курс NBRB BYN/USD: {{ rate_usd.rate_usd|floatformat:2 }}</div>
+        <div>Курс NBRB BYN/EUR: {{ rate_eur.rate_eur|floatformat:2 }}</div>
+    </div>
+
+    <h1 class="title_page title_page-products-basket"> Ваша корзина</h1>
+    </br>
     {% if products %}
-        <table class="product__order-table">
-            <thead class="product__order-table-header">
-                <tr >
-                    <th class="product__order-table-header-product">Товар</th>
-                    <th class="product__order-table-header-price">Цена</th>
-                    <th class="product__order-table-header-action">Действие</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td class="product__cart_product-name">{{ product.name }}</td>
-                        <td class="product__cart_product-price">{{ product.price }} руб.</td>
-                        <td class="product__cart_product-button">
-                            <form method="post" action="{% url 'products:remove_from_cart' product.id %}" style="display:inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="product__button product__button-del">Удалить</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <form method="POST" action="{% url 'products:delete_selected' %}">
+            {% csrf_token %}
+            <label>
+                <input type="checkbox" onclick="toggleCheckboxes(this)" /> Выделить всё
 
+            </label>
+            <button type="submit" class="product__button product__button-del">Удалить отмеченные</button>
+            <table class="product__order-table">
+                <thead class="product__order-table-header">
+                    <tr>
+                        <th style="border:1px solid black;" class="product__order-table-header-select">Чек</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-product">Наименование товара</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-quantity">Количество</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-subtotal">Цена</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-subtotal">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td style="border:1px solid black;" class="product__cart_product-checkbox">
+                                <input type="checkbox" name="selected_item" value="{{ product.id }}" />
+                            </td>
+                            <td style="border:1px solid black;" class="product__cart_product-name">{{ product.product.name }}</td>
+                            <td style="border:1px solid black;" class="product__cart_product-quantity">{{ product.quantity }}</td>
+                            <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ product.product.price |mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                            <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ product.total_price |mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+        </form>
+
+
+        <!--  Скрипт для управления чекбоксами -->
+        <script>
+        function toggleCheckboxes(masterCheckbox) {
+            const checkboxes = document.querySelectorAll('input[name="selected_item"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = masterCheckbox.checked;
+            });
+        }
+        </script>
+
+
+        <div><p class="product__order-total-amount">
+                Итого в корзине:
+                {{ total|mul:rate_usd.rate_usd|floatformat:2}} Br </br>
+               {{ total }} $ </br>
+               {{ total|mul:rate_usd.rate_usd|div:rate_eur.rate_eur|floatformat:2}} € </br>
+        </p></div>
+        </br>
         <div class="product__empty-full-basket-wrapper">
-            <div><p class="product__order-total-amount">Итого к оплате: {{ total }} руб.</p></div>
-            <div><a class="product__button product__button-cont"  href="{% url 'blog:send_email' %}">Купить</a></div>
+            <div><a href="{% url 'products:pre_order' %}" class="product__button product__button-cont">К оформлению</a></div>
             <div><a href="{% url 'products:products' %}" class="product__button product__button-cont">Продолжить покупки</a></div>
+
         </div>
 
-    {% else %}
 
+    {% else %}
         <div class="product__empty-full-basket-wrapper">
             <div class="product__description-empty-basket"><p>Корзина пуста.</p></div>
             <div><a href="{% url 'products:products' %}" class="product__button product__button-cont">Продолжить покупки</a></div>

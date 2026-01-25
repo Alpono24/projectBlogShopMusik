@@ -28,7 +28,6 @@ main{
     max-width: 100%;
     height: 60px;
 
-
     position: fixed;
     top: 0;
     left: 0;
@@ -112,12 +111,12 @@ main{
 
 /*Style footer START*/
 .footer {
-    background-color: #41343493;
+    background-color: black;
     text-align: center;
     color: white;
     font-size: 16px;
     padding: 20px 20px;
-    min-height: 80px;
+    height: 80px;
 }
 
 .container{
@@ -138,6 +137,27 @@ main{
 .footer__right-part {
     flex-basis: 50%;
 }
+
+.button-feedback{
+
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+
+    color: black;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.button-feedback:hover:hover {
+    transform: scale(1.25);
+    background: grey;
+    /*box-shadow: 0 0 10px 0;*/
+}
+
 /*Style footer END*/
 
 

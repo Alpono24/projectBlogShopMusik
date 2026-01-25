@@ -13,7 +13,6 @@
             <div class="post_detail__img"><img class="post_detail__img_img" src="{{ post.image.url }}" alt="{{ post.name }}"></div>
             {% endif %}
 
-
         <div class="post_info-blok">
             <div class="post_info">Автор публикации: {{post.author}}</div>
             <div class="post_info">Категория: {{post.category}}</div>
@@ -23,7 +22,7 @@
         <div class="post_choice-menu">
             <div><a class="buttonSimp"  href="{% url 'blog:posts' %}">На главную</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:edit_post' post.id %}">Редактировать пост</a></div>
-            <div><a class="buttonSimp"  href="{% url 'blog:send_email' %}">Отправить сообщение владельцу</a></div>
+            <div><a class="buttonSimp"  href="{% url 'blog:send_email_back' %}">Отправить сообщение владельцу</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:delete_post' post.id %}">Удалить пост</a></div>
         </div>
     </div>

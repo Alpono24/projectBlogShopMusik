@@ -1,0 +1,40 @@
+.registration__title_page{
+margin-bottom: 80px;
+}
+
+
+.registration__user_name {
+    padding: 10px;
+    border-color: red;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    background-color: white;
+    color: grey;
+    margin-right: 10px;
+    width: 50%;
+    text-align: center;
+}
+
+.registration__password {
+    padding: 10px;
+    border-color: red;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    background-color: white;
+    color: grey;
+    margin-right: 10px;
+    width: 50%;
+    text-align: center;
+}
+
+.pageLoginButton{
+    margin-top: 90px;
+}
+
+.pageRegisterButton{
+    margin-top: 200px;
+}

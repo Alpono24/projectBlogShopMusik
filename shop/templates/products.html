@@ -1,6 +1,7 @@
-
 {% extends 'base.html' %}
+{% load custom_filters %}
 {% load static %}
+
 
 {% block title %}Список товаров{% endblock %}
 
@@ -11,6 +12,11 @@
         <div><a class="product__button-cart" href="{% url 'products:cart_view' %}">Корзина 🛒</a></div>
     </div>
 
+<div class="course_style">
+    <div>Курс NBRB BYN/USD: {{ rate_usd.rate_usd|floatformat:2 }}</div>
+    <div>Курс NBRB BYN/EUR: {{ rate_eur.rate_eur|floatformat:2 }}</div>
+</div>
+
     <!-- CODE SEARCH START -->
     <form method="get" class="search-form">
         <div class="search-container">
@@ -19,8 +25,6 @@
         </div>
     </form>
     <!-- CODE SEARCH END -->
-
-
 
     <!-- CODE CATEGORY START -->
     <div class="shop_category__styles">
@@ -33,7 +37,6 @@
         {% endfor %}
     </div>
     <!-- CODE CATEGORY END -->
-
 
     <!-- CODE PRODUCT START -->
 
@@ -48,37 +51,35 @@
 
                 <div class="card-body">
                     <h5 class="product__name">{{ product.name |truncatewords:3  }}</h5>
-                    <!-- <p class="product__description">{{ product.description|truncatewords:15 }}</p> -->
 
-                    <!-- Новое: объединяем нижнюю часть -->
                     <div class="card-footer">
+                            {% if product.price %}
 
-                        {% if product.price_in_byn %}
-                            <p class="product__price">{{ product.price_in_byn }} Br</p>
-                        {% else %}
-                            <p class="product__price">Цена в BYN временно недоступна.</p>
-                        {% endif %}
+                                <p class="product__price">
+                                        {{ product.price|mul:rate_usd.rate_usd|floatformat:2}} Br
+                                </p>
 
+                                <p class="product__price">
+                                        {{ product.price|mul:rate_usd.rate_usd|div:rate_eur.rate_eur|floatformat:2}} €
+                                </p>
 
-                        {% if product.price_in_eur %}
-                            <p class="product__price">{{ product.price_in_eur }} EUR</p>
-                        {% else %}
-                            <p class="product__price">Цена в EUR временно недоступна.</p>
-                        {% endif %}
+                                <p class="product__price">{{ product.price }} $</p>
+                            {% else %}
+                                <p class="product__price">Цена временно недоступна.</p>
+                            {% endif %}
 
-                        <p class="product__price">{{ product.price }} $</p>
+                            {% if product.in_stock %}
+                                <span class="product__in-stock">В наличии {{product.quantity}} {{product.unit}}</span>
+                            {% else %}
+                                <span class="product__not-in-stock">Нет в наличии</span>
+                            {% endif %}
 
-
-                        {% if product.in_stock %}
-                            <span class="product__in-stock">В наличии</span>
-                        {% else %}
-                            <span class="product__not-in-stock">Нет в наличии</span>
-                        {% endif %}
-
-                        <div class="product__more">
-                            <a class="product__button-more" href="{% url 'products:product_detail' product.id %}" >Подробнее</a>
-                        </div>
+                            <div class="product__more">
+                                <a class="product__button-more" href="{% url 'products:product_detail' product.id %}">Подробнее</a>
+                            </div>
                     </div>
+
+
                 </div>
             </div>
         {% empty %}
@@ -86,8 +87,6 @@
         {% endfor %}
     </div>
     <!-- CODE PRODUCT END -->
-
-
 
     <!-- CODE PAGINATION START -->
     <nav>

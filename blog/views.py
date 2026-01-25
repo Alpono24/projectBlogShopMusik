@@ -1,6 +1,4 @@
-from allauth.account.views import login
 from django.conf import settings
-
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404, redirect
@@ -8,10 +6,9 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Post, Category
 from .forms import PostForm
+from .tasks import send_email_async
 
 
-
-# Create your views here.
 
 def posts(request):
     title = 'Статьи'
@@ -27,9 +24,8 @@ def posts(request):
             Q(body__icontains=query)
         ).distinct()
 
-
     # Пагинация
-    paginator = Paginator(posts, 5)  # показать по 10 постов на страницу
+    paginator = Paginator(posts, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'title': title, 'categories': categories, 'page_obj': page_obj}
@@ -92,25 +88,15 @@ def delete_post(request, id):
     return render(request, 'delete_confirmation.html', {'post': post})
 
 
-
 @login_required(login_url='/registration/login/')
-def send_email(request):
+def send_email_back(request):
     if request.method == 'POST':
-        subject = request.POST.get('subject')  # Получаем тему письма из формы
-        message = request.POST.get('message')  # Получаем тело письма из формы
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
         recipient_list = ['alex.ponomarov@mail.ru']
 
-        try:
-            send_mail(
-                subject=subject,
-                message=message,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=recipient_list,
-                fail_silently=False
-            )
-            return render(request, 'email_sent_successfully.html')
-        except Exception as e:
-            return render(request, 'email_error.html', {'error_message': str(e)})
+        send_email_async.delay(subject, message, recipient_list)
+
+        return render(request, 'email_sent_successfully.html')
     else:
         return render(request, 'send_email.html')
-

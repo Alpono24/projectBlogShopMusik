@@ -7,6 +7,12 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = '1. Жанр'
+        verbose_name_plural = '1. Жанры'
+
+
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=200)
@@ -15,6 +21,11 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = '2. Артист / Группа'
+        verbose_name_plural = '2. Артисты / Группы'
+
 
 
 class Album(models.Model):
@@ -26,6 +37,11 @@ class Album(models.Model):
     def __str__(self):
         return f"{self.title} — {self.artist.name}"
 
+    class Meta:
+        verbose_name = '3. Альбом'
+        verbose_name_plural = '3. Альбомы'
+
+
 
 class Song(models.Model):
     title = models.CharField(max_length=200)
@@ -36,6 +52,10 @@ class Song(models.Model):
 
     def __str__(self):
         return f"{self.title} — {self.artist.name}"
+
+    class Meta:
+        verbose_name = '4. Песня'
+        verbose_name_plural = '4. Песни'
     
 
 

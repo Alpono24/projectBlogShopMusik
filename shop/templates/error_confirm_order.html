@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="wrapper wrapper_shop">
+
+    <h1 style="color:red" class="title_page">Произошла ошибка</h1>
+    <h1 style="color:red" class="title_page">при оформлении заказа!</h1>
+
+    <div class="product__card-wrapper">
+        <div class="product__card">
+            <div class="product__card-container">
+                <h2 style="color:red" class="product_card__name">Ваш заказ №{{ order.pk }} не отправлен. Повторите попытку.</h2>
+                <p>Подробности заказа:</p>
+                <ul>
+                    <li>Всего наименований: {{ order.items.count }}</li>
+                    <li>Сумма заказа: {{ order.total_amount|mul:rate_usd.rate_usd|floatformat:2}} Br</li>
+                </ul>
+
+                <!-- Список товаров -->
+                <table class="product__order-table">
+                    <thead class="product__order-table-header">
+                     <tr>
+                        <th style="border:1px solid black;" class="product__order-table-header-product">Название товара</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-quantity">Количество</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-subtotal">Цена</th>
+                        <th style="border:1px solid black;" class="product__order-table-header-subtotal">Стоимость</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.items.all %}
+                        <tr>
+                            <td style="border:1px solid black;" class="product__cart_product-name">{{ order_item.product.name }}</td>
+                            <td style="border:1px solid black;" class="product__cart_product-quantity">{{ item.quantity }}</td>
+                            <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ item..product.price |mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                            <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ item.total_price|mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="4">Нет товаров в заказе</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <p>Свяжитесь с нами при наличии вопросов с оформлением заказа.</p>
+                <p>С уважением!</p>
+                <p>команда магазина BlogShopMusic</p>
+                <p>alex.ponomarov@mail.ru</p>
+            </div>
+        </div>
+
+        <div class="product__empty-full-basket-wrapper">
+             <div><a href="{% url 'products:cart_view' %}" class="product__button product__button-cont">Корзина</a></div>
+             <div><a href="{% url 'products:products' %}" class="product__button product__button-cont">Продолжить покупки</a></div>
+         </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

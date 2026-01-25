@@ -1,16 +1,11 @@
 from decimal import Decimal
-from http.client import responses
-
 from django.test import TestCase
-from rest_framework import status, response
+from rest_framework import status
 from rest_framework.test import APITestCase
-
-# Create your tests here.
-
-from .models import Product, Category
+from .models import Product
 
 
-# #1 Unit test #1
+
 class ProductTests(TestCase):
     def test_price_with_vat(self):
         product = Product(name = 'Smartphone', price = Decimal('1000.00'))
@@ -22,23 +17,23 @@ class ProductTests(TestCase):
 
 
 
-# #2 Integration test #2
 class ProductIntegrationTests(APITestCase):
-    # тест с положительной ценой №1
+
     def test_create_product(self):
         data ={'name': 'Laptop', 'price': '1000.0'}
         response = self.client.post('/shop_api/products/create/', data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(Product.objects.filter(name='Laptop').exists())
 
-    # тест с отрицательной ценой №2
+
+
     def test_create_product_price_incorrect(self):
         data ={'name': 'Laptop', 'price': '-1000.0'}
         response = self.client.post('/shop_api/products/create/', data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
-#3 Functional test #3
+
 class ProductListTests(APITestCase):
     def test_get_products(self):
         Product.objects.create(name = 'Samsung', price = '999.99')
@@ -47,14 +42,7 @@ class ProductListTests(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('Samsung', str(response.data))
 
-#4 Performance Testing (Нагрузочное тестирование) - выдержит ли система нагрузку №4
-#5 Регрессионное тестирование - старые функции остались рабочими после новых фич. Не сломалось ли что-то после измененийй в коде №5
-#6 UI Testing - все ли отображается и все ли щёлкается ... кроме кода. Проверяем интерфейс №6
-#7 Compatibility Testing - функционирование и взаимодействие с различными окружениями №7
-#8 Acceptance Testing (Приемочное тестирование) После этого тестирования продукт считается готовым №8
 
-
-# Test CRUD operations
 
 class ProductModelTest(TestCase):
     def test_crud_operations(self):
@@ -69,6 +57,7 @@ class ProductModelTest(TestCase):
         self.assertEqual(Product.objects.count(), 0)
 
 
+
 class ProductViewTests(TestCase):
     def test_product_detail_found(self):
             product = Product.objects.create(name = 'Mac Book', price = 100)
@@ -77,18 +66,7 @@ class ProductViewTests(TestCase):
             self.assertIn('Mac Book', response.json()['name'])
 
 
-    # def test_redirect_after_register(self):
-    #         response = self.client.post('/register/',{
-    #            'username': 'user',
-    #            'password': '123',
-    #            'password2': '123',
-    #            'email': 'test@example.com'
-    #         })
-    #         self.assertEqual(response.status_code, 302)
-    #         self.assertIn('/', response['Location'])
 
-# 3 Strategy
-# Black Box Test Strategy
 class ProductBlackBoxTests(APITestCase):
     def test_create_product(self):
         data ={'name': 'Laptop', 'price': '1000.0'}
@@ -96,16 +74,12 @@ class ProductBlackBoxTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
-# White Box Test Strategy
+
 class ProductWhiteBoxTests(APITestCase):
     def test_price_with_vat_calculation(self):
         product = Product(name='Smartphone', price=Decimal('1000.00'))
         result = product.price_with_vat
         self.assertEqual(result, Decimal('1200'))
-
-# Grey Box Test Strategy
-
-
 
 
 

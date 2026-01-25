@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<div class="wrapper wrapper_shop">
+
+      <div class="course_style">
+        <div>Курс NBRB BYN/USD: {{ rate_usd.rate_usd|floatformat:2 }}</div>
+        <div>Курс NBRB BYN/EUR: {{ rate_eur.rate_eur|floatformat:2 }}</div>
+    </div>
+
+    <h1 class="title_page title_page-order">3. Отправление заказа</h1>
+
+    {% if products %}
+        <table class="product__order-table">
+            <thead class="product__order-table-header">
+                <tr>
+                    <th style="border:1px solid black;" class="product__order-table-header-product">Название товара</th>
+                    <th style="border:1px solid black;" class="product__order-table-header-quantity">Количество</th>
+                    <th style="border:1px solid black;" class="product__order-table-header-subtotal">Цена</th>
+                    <th style="border:1px solid black;" class="product__order-table-header-subtotal">Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td style="border:1px solid black;" class="product__cart_product-name">{{ product.product.name }}</td>
+                        <td style="border:1px solid black;" class="product__cart_product-quantity">{{ product.quantity }}</td>
+                        <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ product.product.price |mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                        <td style="border:1px solid black;" class="product__cart_product-subtotal">{{ product.product.price |mul:product.quantity |mul:rate_usd.rate_usd|floatformat:2}} Br</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="product__order-total-amount">
+            <strong>Итого к оплате:</strong> {{ total_amount |mul:rate_usd.rate_usd|floatformat:2}} Br
+        </div>
+
+         <div class="product__empty-full-basket-wrapper">
+
+            <form method="POST" action="{% url 'products:send_email_sell' order_id=order_id %}">
+                {% csrf_token %}
+
+                <button type="submit" class="product__button product__button-cont">Отравить заказ</button>
+            </form>
+
+
+             <div><a href="{% url 'products:cart_view' %}" class="product__button product__button-cont">Корзина</a></div>
+        </div>
+
+    {% else %}
+        <div class="product__empty-full-basket-wrapper">
+            <div class="product__description-empty-basket"><p>Нет товаров для оформления заказа.</p></div>
+            <div><a href="{% url 'products:products' %}" class="product__button product__button-cont">Продолжить покупки</a></div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,47 +1,23 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 
 <div class="wrapper">
-    <h1 class="title_page" style="margin-bottom: 80px;">Войдите в свою учётную запись или зарегистрируйтесь</h1>
+    <h1 class="title_page registration__title_page">Войдите в свою учётную запись или зарегистрируйтесь</h1>
 
 
     <form method="post" action="{% url 'registration:login' %}">
         {% csrf_token %}
         <p class="labelToCenter">
-<!--            <label>Имя пользователя:</label></br>-->
-            <input type="text" name="username" placeholder="Имя пользователя"  style="
-                                                                                padding: 10px;
-                                                                                border-color: red;
-                                                                                border: 1px solid;
-                                                                                border-radius: 5px;
-                                                                                font-size: 16px;
-                                                                                margin-top: 5px;
-                                                                                background-color: white;
-                                                                                color: grey;
-                                                                                margin-right: 10px;
-                                                                                width: 50%;
-                                                                                text-align: center;
-                                                                                ">
+
+            <input type="text" name="username" placeholder="Имя пользователя"  class="registration__user_name">
         </p>
+
         <p class="labelToCenter">
-<!--            <label >Пароль:</label></br>-->
-            <input type="password" name="password" placeholder="Пароль" style="
-                                                                                padding: 10px;
-                                                                                border-color: red;
-                                                                                border: 1px solid;
-                                                                                border-radius: 5px;
-                                                                                font-size: 16px;
-                                                                                margin-top: 5px;
-                                                                                background-color: white;
-                                                                                color: grey;
-                                                                                margin-right: 10px;
-                                                                                width: 50%;
-                                                                                text-align: center;
-                                                                                ">
+            <input type="password" name="password" placeholder="Пароль" class="registration__password">
         </p>
-        <div style="margin-top: 90px;" class = 'pageLoginButton'>
+
+        <div  class = 'pageLoginButton'>
             <div><button class="buttonSimpForm" type="submit">Войти</button></div>
             <div>Нет аккаунта?  <a class="buttonSimp" href="{% url 'registration:register' %}">Зарегистрироваться</a></div>
         </div>

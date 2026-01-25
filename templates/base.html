@@ -18,30 +18,28 @@
     <link rel="stylesheet" href="{% static 'css/forms_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'css/buttons_style.css' %}">
-    
+
 
 
 </head>
 <body class="body__base">
     <header class="header">
             <div class="menu">
-                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
-                <div><a class="button__menu button__menu-first" href="{% url 'blog:posts' %}">Блог</a></div>
+                <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
+                <div><a class="button__menu button__menu-first" href="{% url 'blog:posts' %}">Статьи</a></div>
                 <div><a class="button__menu" href="{% url 'shop:products' %}">Магазин</a></div>
                 <div><a class="button__menu" href="{% url 'music:music' %}">Музыка</a></div>
-                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
             </div>
+
             <div class="logo">
                   <img class="logo_img"src="{% static 'svg/logo.svg' %}"  alt="logo">
-                 <!-- <a class="logo_img" href="{% url 'blog:posts' %}"><img class="logo_img"src="{% static 'svg/logo.svg' %}"  alt="logo"></a> -->
             </div>
             <div class="menu_register">
-                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
                 {% if user.is_authenticated %}
                     <div class="menu_auth_name"><pre>Вы зарегистрированы как:
                         <b>{{ user.username }}</b></pre>
                     </div>
-                    <div> 
+                    <div>
                         <form method="post" action="{% url 'registration:logout' %}">
                             {% csrf_token %}
                             <button class="button__menu button__menu-last" type="submit">Выйти</button>
@@ -51,7 +49,7 @@
                     <div><a class="button__menu" href="{% url 'registration:login' %}">Войти</a></div>
                     <div><a class="button__menu button__menu-last" href="{% url 'registration:register' %}">Регистрация</a></div>
                 {% endif %}
-                <!-- <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div> -->
+                 <div><img src="{% static 'svg/christmas-tree-svgrepo-com.svg' %}" style="width: 45px;" alt="Christmas tree"></div>
             </div>
     </header>
 
@@ -71,11 +69,11 @@
                     <p>Alpono24</p>
                     <p>alex.ponovarov@mail.ru</p>
                 </div>
-                <div class="footer__right-part"><a class="button-feedback"  href="{% url 'blog:send_email' %}">Обратная связь</a></div>
+
+                <div class="footer__right-part"><a class="button-feedback"  href="{% url 'blog:send_email_back' %}">Обратная связь</a></div>
             </div>
         </footer>
     </div>
 </body>
 
 </html>
-

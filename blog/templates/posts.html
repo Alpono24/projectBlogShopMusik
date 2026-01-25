@@ -5,10 +5,9 @@
 
 <div class="wrapper">
     <div class="posts__title-box">
-        <h1 class="title_page">{{ title }}</h1>
-        <a class="button__add-post" href="{% url 'blog:add_post' %}">Добавьте свою статью</a>
+        <div><h1 class="title_page_blog title_page">{{ title }}</h1></div>
+        <div><a class="button__add-post" href="{% url 'blog:add_post' %}">Добавьте свою статью</a></div>
     </div>
-
 
        <!-- ПОЛЕ ПОИСКА СТАТЬИ СТАРТ -->
     <form method="get" class="search-form">
@@ -32,8 +31,6 @@
     </div>
     <!-- ФИЛЬТР ПО КАТЕГОРИЯМ ФИНИШ -->
 
-
-
     <!-- СТАТЬИ СТАРТ -->
     <div class="post__cards-wrapper">
         {% for post in page_obj %}
@@ -42,15 +39,12 @@
                         <div><h2 class="post__title-all">{{post.title}}</h2></div>
                         <div><a class="post__button-more" href="{% url 'blog:post_detail' post.id %}">Подробнее</a></div>
                     </div>
-
                     <div class="post__body-img-wrapper">
                         <div class="post__body">{{post.body}}<div>
-
                         {% if post.image %}
                         <div class='post__img'><img class='post__img_img' src="{{ post.image.url }}" alt="{{ post.name }}"></div>
                         {% endif %}
                     </div>
-
                     <div class="post_info-blok">
                         <div class="post_info">Автор публикации: {{post.author}}</div>
                         <div class="post_info">Категория: {{post.category}}</div>
@@ -60,8 +54,6 @@
         {% endfor %}
     </div>
     <!-- СТАТЬИ ФИНИШ -->
-
-
 
     <!-- ПАГИНАЦИЯ СТАРТ -->
     <nav>

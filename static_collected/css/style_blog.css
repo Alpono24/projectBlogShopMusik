@@ -1,13 +1,18 @@
-product__button
-
 /*Style POST START*/
-
 .posts__title-box{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
+.title_page_blog {
+    margin-top: 10px;
+}
+
+.post__category_styles{
+    margin-bottom: 40px;
+}
 
 .post__title-all{
 font-family: 'Roboto', sans-serif;
@@ -20,7 +25,7 @@ color: #000000;
 margin-bottom: 5px;
 
 }
- .post__title-box{
+.post__title-box{
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -28,35 +33,48 @@ margin-bottom: 15px;
 border-bottom: 1px solid #9d9d9d;
 }
 
-.post__card-wrapper{
-    margin-top: 40px;
+
+/*.post__cards-wrapper{
+  display: flex;
+  flex-direction: column;
+}*/
+/*.post__card-wrapper{
     display: flex;
-    flex-direction: column;  
-    align-items: stretch;   
+    flex-direction: column;
+}*/
+.post__body-img-wrapper{
+    display: flex;
+    flex-direction: column;
 }
 .post__body {
-    flex-grow: 1;           
-    overflow-wrap: break-word; 
-    word-wrap: break-word;   
-    hyphens: auto;       
-    color: #000;  
+    background-color: white; /* This */
+    flex-grow: 1;
+    white-space: pre-line;
 
+    /*white-space: normal;
+    word-wrap: break-word;
+    line-height: normal;
+    overflow-wrap: anywhere;*/
+
+    text-align: justify;      /* Выравнивание текста по обоим краям (по желанию) */
+    line-height: 1.6;         /* Межстрочное расстояние */
+    word-wrap: break-word; /* Поддержка для старых браузеров */
+    overflow-wrap: break-word; /* Современное свойство */
+    -webkit-hyphens: auto; /* Safari */
+    -moz-hyphens: auto;    /* Firefox */
+    -ms-hyphens: auto;     /* IE10+ */
+    hyphens: auto;         /* Включаем поддержку переносов в браузере */
 }
 
 .post__img {
     border-radius: 5px;
     overflow: hidden;
     transition: transform .3s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+    box-shadow: 0 2px 8px  rgba(0, 0, 0, 0.7);
     max-width: 100%;
-    /* max-height: 200px; */
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
-
     &:hover {
-        transform: scale(1.01);
+        transform: scale(1.015);
     }
 }
 
@@ -72,12 +90,13 @@ object-fit: cover;
 
 /*Style INFO_ABOUT_POST START*/
 .post_info-blok{
-    margin-top: 20px;
-    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column; /
+    margin-bottom: 40px;
     }
 .post_info{
     text-align: right;
-    color: #2b960b;
+    color: black;
 }
 /*Style INFO_ABOUT_POST end*/
 
@@ -106,6 +125,9 @@ max-width: 100%;
 margin-top: 20px;
 margin-bottom: 20px;
 text-align: center;
+box-shadow: 0 2px 8px  rgba(0, 0, 0, 0.7);
+border-radius: 5px;
+
 }
 
 .post_detail__img_img{
@@ -125,25 +147,25 @@ object-fit: contain;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 30px;
-    
+
 }
 
 .post__category_buttons strong {
-       display: inline-flex;    
-      justify-content: center; 
-      padding: 6px 12px;      
-      margin-right: 10px;      
+       display: inline-flex;
+      justify-content: center;
+      padding: 6px 12px;
+      margin-right: 10px;
       font-size: 14px;
       color: #000000;
       text-transform: uppercase;
 }
 
-.post__category_buttons { 
+.post__category_buttons {
    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 6px 12px;
-    background-color: #000000; 
+    background-color: #000000;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -153,43 +175,11 @@ object-fit: contain;
 }
 
 .post__category_buttons:hover {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     color: #000000;
     border: 1px dotted;
 }
 /*Style POST_CATEGORY END*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -232,10 +222,9 @@ object-fit: contain;
 
 
 
-        
 
 
 
 
 
-        
+
