@@ -26,12 +26,11 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('MYSQL_SECRET_KEY')
-# SECRET_KEY = 'django-insecure-87j5lne(x@wvy-*6=%#t86($%t&))#aq8!e!)7qbj%%_4uv+c2'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = False
-
 
 # ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = []
@@ -57,6 +56,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     'whitenoise.runserver_nostatic',
+
     'blog',
     'music',
     'shop',

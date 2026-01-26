@@ -27,15 +27,18 @@
     <!-- CODE SEARCH END -->
 
     <!-- CODE CATEGORY START -->
+
     <div class="shop_category__styles">
         <strong>Категории:</strong>
         <a  class="shop_category__buttons"href="{% url 'shop:products' %}">Все</a>
         {% for category in categories %}
-        <a  class="shop_category__buttons" href="?category={{ category.id }}" >
+
+        <a class="shop_category__buttons" href="{% url 'shop:products' %}?category={{ category.id }}">
             {{ category.name }}
         </a>
         {% endfor %}
     </div>
+
     <!-- CODE CATEGORY END -->
 
     <!-- CODE PRODUCT START -->
