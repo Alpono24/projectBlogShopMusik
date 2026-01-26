@@ -1,0 +1,73 @@
+  version: '3.8'
+
+  services:
+    backend:
+      build: .
+      command: gunicorn apps.wsgi:application --bind 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        - mysql
+      env_file:
+        - .env
+      environment:
+        - DEBUG=True
+        - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6=#t86(t&))#aq8!e!)7qbj_4uv+c2
+        - EMAIL_HOST_USER=alex.ponomarov@mail.ru
+        - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
+        - TIME_ZONE=Europe/Minsk
+        - USE_TZ=True
+
+    celery_worker:
+      build: .
+      command:  celery -A apps worker -l info
+      volumes:
+        - .:/code
+      depends_on:
+        - mysql
+        - redis
+      env_file:
+        - .env
+      environment:
+        - DEBUG=True
+        - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6=#t86(t&))#aq8!e!)7qbj_4uv+c2
+        - EMAIL_HOST_USER=alex.ponomarov@mail.ru
+        - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
+        - TIME_ZONE=Europe/Minsk
+        - USE_TZ=True
+
+    celery_beat:
+      build: .
+      command:   celery -A apps beat -l info 
+        - .:/code
+      depends_on:
+        - mysql
+        - redis
+      env_file:
+        - .env
+      environment:
+        - DEBUG=True
+        - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6=#t86(t&))#aq8!e!)7qbj_4uv+c2
+        - EMAIL_HOST_USER=alex.ponomarov@mail.ru
+        - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
+        - TIME_ZONE=Europe/Minsk
+        - USE_TZ=True
+
+    mysql:
+      image: mysql:8.0
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: securepasswd
+        MYSQL_DATABASE: Apps_8
+      volumes:
+        - mysql_data:/var/lib/mysql
+
+    redis:
+      image: redis:alpine
+      restart: always
+
+  volumes:
+    mysql_data:
+

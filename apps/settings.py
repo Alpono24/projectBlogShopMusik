@@ -125,6 +125,10 @@ DATABASES = {
         'PORT': os.environ.get('MYSQL_DB_PORT', '3306'),  # Порт MySQL (стандартный 3306)
     }
 }
+
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
