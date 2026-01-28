@@ -13,13 +13,6 @@ services:
       - postgres
     env_file:
       - .env
-    environment:
-      - DEBUG=True
-      - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6t86(t&))aq8!e!)7qbj_4uv+c2
-      - EMAIL_HOST_USER=alex.ponomarov@mail.ru
-      - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
-      - TIME_ZONE=Europe/Minsk
-      - USE_TZ=True
     networks:
       - app_net
 
@@ -33,13 +26,6 @@ services:
       - redis
     env_file:
       - .env
-    environment:
-      - DEBUG=True
-      - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6t86(t&))aq8!e!)7qbj_4uv+c2
-      - EMAIL_HOST_USER=alex.ponomarov@mail.ru
-      - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
-      - TIME_ZONE=Europe/Minsk
-      - USE_TZ=True
     networks:
       - app_net
 
@@ -53,13 +39,6 @@ services:
       - redis
     env_file:
       - .env
-    environment:
-      - DEBUG=True
-      - SECRET_KEY=django-insecure-87j5lne(x@wvy-*6t86(t&))aq8!e!)7qbj_4uv+c2
-      - EMAIL_HOST_USER=alex.ponomarov@mail.ru
-      - EMAIL_HOST_PASSWORD=HCv2PqzjZlzfXtraa7bw
-      - TIME_ZONE=Europe/Minsk
-      - USE_TZ=True
     networks:
       - app_net
 
