@@ -82,3 +82,87 @@
 2026-01-25 23:00:00,883 - INFO - Полученный курс BYN/USD: 2.8471
 2026-01-25 23:00:00,886 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-25T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3292}
 2026-01-25 23:00:00,886 - INFO - Полученный курс BYN/EUR: 3.3292
+2026-01-26 21:12:14,460 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-26 21:12:14,714 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-26T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.338}
+2026-01-26 21:12:14,714 - INFO - Полученный курс BYN/EUR: 3.338
+2026-01-26 21:12:14,721 - ERROR - Ошибка обновления BYN/EUR: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)") 
+2026-01-26 22:00:00,017 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-26 22:00:00,018 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-26 22:00:00,740 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-26T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.338}
+2026-01-26 22:00:00,741 - INFO - Полученный курс BYN/EUR: 3.338
+2026-01-26 22:00:00,745 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-26T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.844}
+2026-01-26 22:00:00,745 - INFO - Полученный курс BYN/USD: 2.844
+2026-01-26 22:00:00,776 - ERROR - Ошибка обновления курса BYN/USD: (1045, "Access denied for user 'root'@'172.23.0.6' (using password: YES)") 
+2026-01-26 22:00:00,776 - ERROR - Ошибка обновления BYN/EUR: (1045, "Access denied for user 'root'@'172.23.0.6' (using password: YES)") 
+2026-01-27 21:11:14,257 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-27 21:11:14,258 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-27 21:11:14,599 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-27T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8451}
+2026-01-27 21:11:14,599 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-27T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3758}
+2026-01-27 21:11:14,600 - INFO - Полученный курс BYN/USD: 2.8451
+2026-01-27 21:11:14,600 - INFO - Полученный курс BYN/EUR: 3.3758
+2026-01-27 21:11:14,665 - ERROR - Ошибка обновления BYN/EUR: (1045, "Access denied for user 'root'@'172.23.0.4' (using password: YES)") 
+2026-01-27 21:11:14,665 - ERROR - Ошибка обновления курса BYN/USD: (1045, "Access denied for user 'root'@'172.23.0.4' (using password: YES)") 
+2026-01-27 22:00:00,016 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-27 22:00:00,016 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-27 22:00:00,642 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-27T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3758}
+2026-01-27 22:00:00,643 - INFO - Полученный курс BYN/EUR: 3.3758
+2026-01-27 22:00:00,645 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-27T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8451}
+2026-01-27 22:00:00,646 - INFO - Полученный курс BYN/USD: 2.8451
+2026-01-27 22:00:00,675 - ERROR - Ошибка обновления BYN/EUR: (1045, "Access denied for user 'root'@'172.23.0.6' (using password: YES)") 
+2026-01-27 22:00:00,677 - ERROR - Ошибка обновления курса BYN/USD: (1045, "Access denied for user 'root'@'172.23.0.6' (using password: YES)") 
+2026-01-28 12:04:26,315 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 12:04:26,315 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 12:04:27,166 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 12:04:27,167 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 12:04:27,173 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 12:04:27,173 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 12:04:27,219 - ERROR - Ошибка обновления курса BYN/USD: (1045, "Access denied for user 'root'@'172.23.0.5' (using password: YES)") 
+2026-01-28 12:04:27,219 - ERROR - Ошибка обновления BYN/EUR: (1045, "Access denied for user 'root'@'172.23.0.5' (using password: YES)") 
+2026-01-28 13:00:00,033 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 13:00:00,033 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 13:00:00,198 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 13:00:00,199 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 13:00:00,199 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 13:00:00,200 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 14:00:00,014 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 14:00:00,014 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 14:00:00,245 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 14:00:00,246 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 14:00:00,246 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 14:00:00,247 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 15:00:00,006 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 15:00:00,006 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 15:00:00,273 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 15:00:00,273 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 15:00:00,274 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 15:00:00,274 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 16:00:00,027 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 16:00:00,027 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 16:00:00,310 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 16:00:00,310 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 16:00:00,312 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 16:00:00,313 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 17:00:00,017 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 17:00:00,017 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 17:00:00,330 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 17:00:00,330 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 17:00:00,330 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 17:00:00,330 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 18:00:00,016 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 18:00:00,016 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 18:00:00,381 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 18:00:00,381 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 18:00:00,391 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 18:00:00,392 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 19:00:00,027 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 19:00:00,027 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 19:00:00,380 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 19:00:00,381 - INFO - Полученный курс BYN/EUR: 3.3989
+2026-01-28 19:00:00,381 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 19:00:00,382 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 20:00:00,007 - INFO - Старт обновления курса валюты update_currency_rate_eur_nbrb!
+2026-01-28 20:00:00,007 - INFO - Старт обновления курса валюты update_currency_rate_usd_nbrb!
+2026-01-28 20:00:00,465 - INFO - Успешно:JSON ответ по курсу USD: {'Cur_ID': 431, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'USD', 'Cur_Scale': 1, 'Cur_Name': 'Доллар США', 'Cur_OfficialRate': 2.8593}
+2026-01-28 20:00:00,465 - INFO - Полученный курс BYN/USD: 2.8593
+2026-01-28 20:00:00,467 - INFO - Успешно:JSON ответ по курсу EUR: {'Cur_ID': 451, 'Date': '2026-01-28T00:00:00', 'Cur_Abbreviation': 'EUR', 'Cur_Scale': 1, 'Cur_Name': 'Евро', 'Cur_OfficialRate': 3.3989}
+2026-01-28 20:00:00,467 - INFO - Полученный курс BYN/EUR: 3.3989

@@ -1,0 +1,305 @@
+/*Style MUSIC_CATEGORY START*/
+.title_page_music{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 25px;
+    text-align: center;
+}
+
+.wrapper_music{
+    max-width: 1500px;
+    background: black;
+    min-height: calc(90vh - 60px - 80px);
+}
+
+.wrapper_music_detail{
+    background: black;
+    min-height: calc(97vh - 60px - 80px);
+}
+
+.music_category__styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.music__category_buttons strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.music__category_buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: #020e1a; 
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.music__category_buttons:hover {
+    background-color: #ffffff; 
+    color: #000000;
+    border: 1px dotted;
+}
+/*Style MUSIC_CATEGORY END*/
+
+
+/*Style ALBUM START */
+.music__best-artist,
+.music__best-track,
+.music__best-album{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.music__img_album{
+   aspect-ratio: 1 / 1;
+   border-radius: 50%;
+   height: 150px;
+}
+
+/*Style ALBUM END */
+.music__cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.music__card-wrapper {
+    background-color: #201d1d;
+    aspect-ratio: 1 / 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    color: white;
+    font-size: 14px;
+    width: calc(14% - 15px);
+    max-width: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: transform .3s ease-in-out;
+    cursor: pointer;
+}
+
+.music__card-wrapper:hover {
+    transform: scale(1.05);
+    color: yellow;
+    box-shadow: 0 0 10px 0;
+}
+
+.music__imgs-wrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.music__imgs-wrapper{
+    flex-shrink: 0; /*note*/
+    margin-bottom: auto;  /*note*/   
+}
+
+.music__song-wrapper {
+    padding: 5px;
+    flex-shrink: 0;  /*note*/
+    align-self: stretch; /*note*/
+}
+
+.music__song-title {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.music__album-title {
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.music__song-artist
+.music__song-album
+.music__song-genre{
+    font-weight: 900;
+    color: #000;
+}
+
+.music__song-audio {
+    height: 18px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #201d1d;
+}
+
+.music__artist-title{
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.music__artist-title_link{
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+
+}
+
+.music__artist-title_link:hover {
+    transform: scale(1.25);
+    color: yellow;
+}
+
+.music__no-songs-available {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px
+}
+
+@media screen and (max-width: 768px) {
+    .music__card-wrapper {
+        width: 100%;
+    }
+}
+
+/*Styles artist_songs START */
+.artist_blok-title{
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.artist_blok-title-img{
+    width: 30%;
+}
+
+.artist_blok-title-text{
+    width: 30%;
+}
+
+.artist_songs-back{
+width: 40%; 
+ text-align: right;
+}
+
+.artist_songs-back-btn{
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 15px;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px dotted;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+}
+
+.artist_songs-back-btn:hover {
+    transform: scale(1.02);
+    color: yellow;
+    box-shadow: 0 0 10px 0;
+}
+
+.artist_img{
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    height: 200px;
+}
+
+.artist_songs-title{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    color: white;
+}
+
+.artist_songs-number{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.artist_song-wrapper{
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    border-top: 1px dotted;
+    border-bottom: 1px dotted;
+}
+
+.artist_song-audio{
+    width: 30%;
+}
+
+.artist_song-info{
+    margin-left: 20px;
+    width: 50%;
+}
+
+.artist_song-info-artist{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.artist_songs-like{
+    width: 10%;
+}
+
+.artist_songs-dislike{
+    width: 10%;
+}
+.artist_songs-add-to-playlis{
+    width: 10%;
+}
+
+.music__song-audio-absent,
+.music__no-songs-available{
+    color: white;
+}
+
+/*Styles artist_songs END */

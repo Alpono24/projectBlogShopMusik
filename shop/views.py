@@ -45,7 +45,7 @@ def products_view(request):
             Q(name__icontains=query)
         ).distinct()
 
-    paginator = Paginator(Product.objects.order_by('id'), 8)
+    paginator = Paginator(products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

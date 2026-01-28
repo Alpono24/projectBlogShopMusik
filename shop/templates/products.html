@@ -95,7 +95,7 @@
     <nav>
         <ul class="pagination">
         {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}">Предыдущая</a></li>
         {% endif %}
         {% for num_page in page_obj.paginator.page_range %}
             {% if num_page == page_obj.number %}
@@ -105,7 +105,7 @@
             {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}">Следующая</a></li>
         {% endif %}
         </ul>
     </nav>

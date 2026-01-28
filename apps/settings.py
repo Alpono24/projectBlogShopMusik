@@ -12,14 +12,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import environ
 import os
 from pathlib import Path
-import pymysql
-pymysql.install_as_MySQLdb()
+# import pymysql
+# pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -54,7 +53,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # Your other apps here
     'debug_toolbar',
-
     'whitenoise.runserver_nostatic',
 
     'blog',
@@ -115,18 +113,34 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Database MYSQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('MYSQL_DB_NAME'),
+#         'USER': os.environ.get('MYSQL_DB_USER'),
+#         'PASSWORD': os.environ.get('MYSQL_DB_PASSWORD'),
+#
+#         'HOST': os.environ.get('MYSQL_DB_HOST', 'localhost'),
+#         # 'HOST': os.environ.get('MYSQL_DB_HOST', 'mysql'),
+#         'PORT': os.environ.get('MYSQL_DB_PORT', '3306'),
+#     }
+# }
+
+# Database POSTGRESQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Используем MySQL-драйвер
-        'NAME': os.environ.get('MYSQL_DB_NAME'),  # Имя базы данных.
-        'USER': os.environ.get('MYSQL_DB_USER'),  # Пользователь MySQL
-        'PASSWORD': os.environ.get('MYSQL_DB_PASSWORD'),  # Пароль пользователя
-        'HOST': os.environ.get('MYSQL_DB_HOST', 'localhost'),  # Адрес сервера MySQL
-        'PORT': os.environ.get('MYSQL_DB_PORT', '3306'),  # Порт MySQL (стандартный 3306)
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRESQL_DB_NAME'),
+        'USER': os.environ.get('POSTGRESQL_DB_USER'),
+        'PASSWORD': os.environ.get('POSTGRESQL_DB_PASSWORD'),
+
+        # 'HOST': os.environ.get('POSTGRESQL_DB_HOST', 'localhost'),
+        'HOST': os.environ.get('POSTGRESQL_DB_HOST', 'postgres'),
+
+        'PORT': os.environ.get('POSTGRESQL_DB_PORT', '5432'),
     }
 }
-
-
 
 
 # Password validation
@@ -151,18 +165,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ru-RU'
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
-USE_TZ = True
+#Настройка зоны Минск
+TIME_ZONE  = os.environ.get('TIME_ZONE')
+USE_TZ = os.environ.get('USE_TZ')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # Префикс URL для статических файлов
-# BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_URL = '/static/'
+
+STATIC_URL = '/static_collected/'
 
 # Папка, куда будут собраны статические файлы
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
@@ -197,9 +210,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-#Настройка зоны Минск
-TIME_ZONE  = os.environ.get('TIME_ZONE')
-USE_TZ = os.environ.get('USE_TZ')
+
 
 #Настройка кэша MEMCACHED
 # CACHES = {
@@ -292,8 +303,11 @@ SWAGGER_SETTINGS = {
 
 
 #Settings Celery - включение Celery в настройки Django
-CELERY_BROKER_URL = 'redis://localhost:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' # Сервер Redis, хранящий результаты выполненных задач
+CELERY_BROKER_URL = 'redis://redis:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0' # Сервер Redis, хранящий результаты выполненных задач
+# CELERY_BROKER_URL = 'redis://localhost:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' # Сервер Redis, хранящий результаты выполненных задач
+
 #CELERY_ACCEPT_CONTENT = ['json'] # Форматы данных, принимаемые брокером (используется JSON)
 CELERY_ACCEPT_CONTENT = ['application/json'] # защищает ваше приложение от риска, связанного с небезопасными форматами сериализации, и способствует повышению общей стабильности и производительности
 CELERY_TASK_SERIALIZER = 'json' # Формат сериализации результатов выполнения задач (JSON)
@@ -301,6 +315,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Minsk'  # Временная зона Минска - Часовой пояс для планирования задач (Минск)
 
 
-# # Обработчики ошибок
+
+#  Обработчики ошибок
 HANDLER404 = 'shop.views.handler404'
 HANDLER500 = 'shop.views.handler500'
