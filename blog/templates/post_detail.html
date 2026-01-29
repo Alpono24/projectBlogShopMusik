@@ -22,7 +22,7 @@
         <div class="post_choice-menu">
             <div><a class="buttonSimp"  href="{% url 'blog:posts' %}">На главную</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:edit_post' post.id %}">Редактировать пост</a></div>
-            <div><a class="buttonSimp"  href="{% url 'blog:send_email_back' %}">Отправить сообщение владельцу</a></div>
+            <div><a class="buttonSimp"  href="{% url 'blog:send_email_back' %}">Отправить сообщение администратору</a></div>
             <div><a class="buttonSimp" href="{% url 'blog:delete_post' post.id %}">Удалить пост</a></div>
         </div>
     </div>

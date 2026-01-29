@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="wrapper">
-    <h1 class="title_page">{{ title }}</h1>
+    <h1 style="margin-bottom: 50px;" class="title_page">{{ title }}</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -25,7 +25,7 @@
                 {{ form.image }}
             </div>
 
-        <div style="margin-top: 50px;" class = 'pageEditPostButton'>
+        <div style="margin-top: 100px;" class = 'pageEditPostButton'>
             <div><button class="buttonSimpForm" type="submit">Сохранить изменения</button></div>
             <div><a class="buttonSimp" href="{% url 'blog:posts' %}">На главную</a></div>
         </div>

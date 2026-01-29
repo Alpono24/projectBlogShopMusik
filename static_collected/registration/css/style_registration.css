@@ -3,6 +3,12 @@ margin-bottom: 80px;
 }
 
 
+.title_page__registration{
+    color:green;
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
 .registration__user_name {
     padding: 10px;
     border-color: red;

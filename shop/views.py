@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db import transaction
-from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from .models import Product, Category, CurrencyRateUSD, CurrencyRateEUR, CartItem, Order, Seller, OrderDetail
@@ -28,38 +27,37 @@ cart_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(mes
 cart_logger.addHandler(cart_handler)
 
 
+
 def products_view(request):
-    title = 'МАГАЗИН'
+    title = 'Магазин'
     categories = Category.objects.all()
     category_id = request.GET.get('category')
     query = request.GET.get('q')
-    products = Product.objects.all()
 
     rate_usd = CurrencyRateUSD.objects.order_by('-created_at').first()
     rate_eur = CurrencyRateEUR.objects.order_by('-created_at').first()
 
-    if category_id:
-        products = products.filter(category_id=category_id)
-    if query:
-        products = Product.objects.filter(
-            Q(name__icontains=query)
-        ).distinct()
+    products = Product.objects.all().order_by('name')
+    filtered_products = products
 
-    paginator = Paginator(products, 8)
+    if category_id:
+        filtered_products = filtered_products.filter(category_id=category_id)
+
+    if query:
+        filtered_products = filtered_products.filter(name__icontains=query)
+
+    paginator = Paginator(filtered_products, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'products.html', {
-        'products': products,
+        'page_obj': page_obj,
         'categories': categories,
         'selected_category': category_id,
         'title': title,
-        'page_obj': page_obj,
         'rate_usd': rate_usd,
         'rate_eur': rate_eur,
     })
-
-
 
 @login_required(login_url='/registration/login/')
 def product_detail(request, pk):

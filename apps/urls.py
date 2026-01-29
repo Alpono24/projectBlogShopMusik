@@ -17,14 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
-
 from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg import openapi
 from rest_framework import permissions
-from rest_framework.decorators import permission_classes
 from drf_yasg.views import get_schema_view
-from rest_framework.permissions import AllowAny
 
 
 schema_view = get_schema_view(
@@ -39,16 +36,15 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls', namespace='blog')),  # Главное пространство имен для blog
-    path('music/', include('music.urls', namespace='music')),  # пространство имен music
-    path('products/', include('shop.urls', namespace='shop')),  # пространство имен shop
-    path('registration/', include('registration.urls', namespace='registration')),  # пространство имен registration
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('music/', include('music.urls', namespace='music')),
+    path('', include('shop.urls', namespace='shop')),
+    path('registration/', include('registration.urls', namespace='registration')),
 
-    path('shop_api/', include('shop_api.urls', namespace='shop_api')),  #  пространство имен для shop_api
-    path('blog_api/', include('blog_api.urls', namespace='blog_api')),  # пространство имен для blog_api
+    path('shop_api/', include('shop_api.urls', namespace='shop_api')),
+    path('blog_api/', include('blog_api.urls', namespace='blog_api')),
 
 ]
-
 
 urlpatterns += [
         path(
