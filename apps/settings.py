@@ -28,7 +28,7 @@ DEBUG = True
 # DEBUG = False
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['projectblogshopmusik.onrender.com']
 SITE_ID = 1
 
 # Application definition
