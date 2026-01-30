@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_seed',
-    'django.middleware.csrf.CsrfViewMiddleware',
 
     # Other installed applications
     'django.contrib.sites',
