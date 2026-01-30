@@ -27,9 +27,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 # DEBUG = False
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['blogshopmusik.onrender.com']
-ALLOWED_HOSTS += ["127.0.0.1"]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['blogshopmusik.onrender.com']
+# ALLOWED_HOSTS += ["127.0.0.1"]
 SITE_ID = 1
 
 # Application definition
@@ -182,7 +182,9 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, 'static'),
+
+    # BASE_DIR / 'static',
     # BASE_DIR / 'blog/static/blog/',
     # BASE_DIR / 'shop/static/shop/',
     # BASE_DIR / 'music/static/music/',
