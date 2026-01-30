@@ -303,7 +303,8 @@ CELERY_TASK_SERIALIZER = 'json' # Формат сериализации резу
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Minsk'  # Временная зона Минска - Часовой пояс для планирования задач (Минск)
 
-
+CELERY_WORKER_CONCURRENCY = 4
+CELERY_MAX_MEMORY_PER_CHILD = 128
 
 #  Обработчики ошибок
 HANDLER404 = 'shop.views.handler404'
