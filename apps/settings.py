@@ -29,6 +29,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['blogshopmusik.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://blogshopmusik.onrender.com']
 ALLOWED_HOSTS += ["127.0.0.1"]
 SITE_ID = 1
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_seed',
+    'django.middleware.csrf.CsrfViewMiddleware',
 
     # Other installed applications
     'django.contrib.sites',
