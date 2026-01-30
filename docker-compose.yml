@@ -45,10 +45,8 @@ services:
   postgres:
     image: postgres:latest
     restart: always
-    environment:
-      POSTGRES_DB: Apps_9D_PSQL
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 240484
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql
     networks:
