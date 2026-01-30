@@ -5,3 +5,4 @@ __pycache__/
 .idea/
 /eval "$(ssh-agent -s)".pub
 /eval "$(ssh-agent -s)"
+# Временные файлы Nano\n*.save
