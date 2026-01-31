@@ -292,18 +292,11 @@ SWAGGER_SETTINGS = {
 
 
 #Settings Celery - включение Celery в настройки Django
-# CELERY_BROKER_URL = 'redis://redis:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
-# CELERY_RESULT_BACKEND = 'redis://redis:6379/0' # Сервер Redis, хранящий результаты выполненных задач
 
 REDIS_URL = os.getenv('REDIS_URL')
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
 
-# CELERY_BROKER_URL = os.getenv('REDIS_URL')  # Подключение к Redis через переменную среды
-# CELERY_RESULT_BACKEND = os.getenv('REDIS_URL')  # Хранение результатов в Redis
-
-# CELERY_BROKER_URL = 'redis://localhost:6379/0' # Адрес сервера Redis, используемого в качестве брокера сообщений
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0' # Сервер Redis, хранящий результаты выполненных задач
 
 #CELERY_ACCEPT_CONTENT = ['json'] # Форматы данных, принимаемые брокером (используется JSON)
 CELERY_ACCEPT_CONTENT = ['application/json'] # защищает ваше приложение от риска, связанного с небезопасными форматами сериализации, и способствует повышению общей стабильности и производительности
