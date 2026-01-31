@@ -16,31 +16,7 @@ services:
     networks:
       - app_net
 
-  celery_worker:
-    build: .
-    command: celery -A apps worker -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - postgres
-      - redis
-    env_file:
-      - .env
-    networks:
-      - app_net
 
-  celery_beat:
-    build: .
-    command: celery -A apps beat -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - postgres
-      - redis
-    env_file:
-      - .env
-    networks:
-      - app_net
 
   postgres:
     image: postgres:latest
@@ -49,12 +25,6 @@ services:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql
-    networks:
-      - app_net
-
-  redis:
-    image: redis:alpine
-    restart: always
     networks:
       - app_net
 
