@@ -18,3 +18,5 @@
 
   # Запуск Django с помощью Gunicorn
   CMD ["gunicorn", "apps.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+
